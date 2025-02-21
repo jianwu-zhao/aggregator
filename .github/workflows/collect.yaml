@@ -2,11 +2,11 @@ name: Collect                                 �
 on:
   # executed once a week on Sundays at 00:00
  schedule:                   
-  - cron: "0 0 * * 1"
+  - cron: "20 11 * * 5"
   workflow_dispatch:                   
 
 concurrency:                  
-  group: ${{ github.repository }}                  
+#  group: ${{ github.repository }}                  
   cancel-in-progress: true                  
 
 env:
