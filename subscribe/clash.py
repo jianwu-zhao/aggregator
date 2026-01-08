@@ -557,7 +557,7 @@ def verify(item: dict, mihomo: bool = True) -> bool:
                             else:
                                 return False
 
-                        if len(short_id) != 8 or not is_hex(short_id):
+                        if len(short_id) != 8 or not is_hex(short_id) or re.match(r"\d+e\d+", short_id, flags=re.I):
                             return False
 
                         reality_opts["short-id"] = QuotedStr(short_id)
@@ -616,6 +616,10 @@ def verify(item: dict, mihomo: bool = True) -> bool:
                         continue
 
                     traffic = item.get(property, "")
+                    if traffic == "null":
+                        item.pop(property)
+                        continue
+
                     if traffic and utils.is_number(traffic):
                         traffic = str(traffic)
 
@@ -632,8 +636,13 @@ def verify(item: dict, mihomo: bool = True) -> bool:
                     authentication = "password"
                     if "obfs" in item:
                         obfs = utils.trim(item.get("obfs", ""))
-                        if obfs != "salamander":
-                            return False
+                        if obfs:
+                            if obfs != "salamander":
+                                return False
+                            obfs_password = utils.trim(item.get("obfs-password", ""))
+                            if not obfs_password:
+                                return False
+
                     if "obfs-password" in item and type(item["obfs-password"]) != str:
                         return False
                 else:
