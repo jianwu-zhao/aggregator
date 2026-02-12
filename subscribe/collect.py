@@ -293,6 +293,7 @@ def aggregate(args: argparse.Namespace) -> None:
             logger.error(f"terminate clash process error")
 
         nodes = [proxies[i] for i in range(len(proxies)) if masks[i]]
+        data = {"proxies": nodes[:100]}   # 只写入前100个
         if len(nodes) <= 0:
             logger.error(f"cannot fetch any proxy")
             sys.exit(0)
