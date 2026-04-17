@@ -32,6 +32,15 @@ PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 DATA_BASE = os.path.join(PATH, "data")
 
 
+def limit_output(nodes: list, limit: int) -> list:
+    limit = max(0, limit or 0)
+    if limit <= 0 or len(nodes) <= limit:
+        return nodes
+
+    logger.info(f"limit output proxies to first {limit} nodes, origin: {len(nodes)}")
+    return nodes[:limit]
+
+
 def assign(
     bin_name: str,
     domains_file: str = "",
@@ -293,10 +302,12 @@ def aggregate(args: argparse.Namespace) -> None:
             logger.error(f"terminate clash process error")
 
         nodes = [proxies[i] for i in range(len(proxies)) if masks[i]]
-        data = {"proxies": nodes[:100]}   # 只写入前100个
-        if len(nodes) <= 0:
-            logger.error(f"cannot fetch any proxy")
-            sys.exit(0)
+
+    if len(nodes) <= 0:
+        logger.error("cannot fetch any proxy")
+        sys.exit(0)
+
+    nodes = limit_output(nodes=nodes, limit=args.max_proxies)
 
     subscriptions = set()
     for p in proxies:
@@ -523,6 +534,14 @@ if __name__ == "__main__":
         required=False,
         default=64,
         help="threads num for check proxy",
+    )
+
+    parser.add_argument(
+        "--max-proxies",
+        type=int,
+        required=False,
+        default=0,
+        help="max proxies to output, 0 means unlimited",
     )
 
     parser.add_argument(

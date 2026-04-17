@@ -36,6 +36,15 @@ import subconverter
 PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 
+def limit_output(proxies: list, limit: int) -> list:
+    limit = max(0, limit or 0)
+    if limit <= 0 or len(proxies) <= limit:
+        return proxies
+
+    logger.info(f"limit output proxies to first {limit} nodes, origin: {len(proxies)}")
+    return proxies[:limit]
+
+
 @dataclass
 class ProcessConfig(object):
     # task list
@@ -624,9 +633,6 @@ def aggregate(args: argparse.Namespace) -> None:
                 dead = len(checks) - len(availables)
                 logger.info(f"proxies check finished, total: {len(checks)}, alive: {len(availables)}, dead: {dead}")
 
-        for item in nochecks:
-            item.pop("sub", "")
-
         if len(nochecks) <= 0:
             logger.error(f"cannot fetch any proxy, group=[{k}], cost: {time.time()-starttime:.2f}s")
             continue
@@ -654,6 +660,11 @@ def aggregate(args: argparse.Namespace) -> None:
                 ip_library=ip_library,
                 digits=bits,
             )
+
+        nochecks = limit_output(proxies=nochecks, limit=args.max_proxies)
+
+        for item in nochecks:
+            item.pop("sub", "")
 
         source_file, data = "config.yaml", {"proxies": nochecks}
         filepath = os.path.join(PATH, "subconverter", source_file)
@@ -782,6 +793,14 @@ if __name__ == "__main__":
         required=False,
         default=64,
         help="threads num for check proxy",
+    )
+
+    parser.add_argument(
+        "--max-proxies",
+        type=int,
+        required=False,
+        default=0,
+        help="max proxies to output, 0 means unlimited",
     )
 
     parser.add_argument(

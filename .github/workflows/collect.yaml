@@ -65,7 +65,12 @@ jobs:
           fi
 
       - name: Collect
-        run: python -u subscribe/collect.py 
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python -u subscribe/collect.py --max-proxies 100
+          else
+            python -u subscribe/collect.py
+          fi
 
       - name: Timestamp
         run: date
