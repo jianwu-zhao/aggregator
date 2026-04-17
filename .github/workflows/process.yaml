@@ -52,22 +52,41 @@ jobs:
 
       - name: Check
         env:
-          SUBSCRIBE_CONF_CONTENT: ${{ secrets.SUBSCRIBE_CONF }}
+          SUBSCRIBE_CONF_VALUE: ${{ secrets.SUBSCRIBE_CONF }}
         run: |
           python - <<'PY'
           import json
           import os
           import sys
+          import urllib.request
 
-          content = os.environ.get("SUBSCRIBE_CONF_CONTENT", "").strip()
-          if not content:
+          value = os.environ.get("SUBSCRIBE_CONF_VALUE", "").strip()
+          if not value:
               print("Error: secret 'SUBSCRIBE_CONF' cannot be empty")
+              sys.exit(1)
+
+          content = ""
+          if value.startswith(("http://", "https://")):
+              try:
+                  request = urllib.request.Request(value, headers={"User-Agent": "aggregator-actions"})
+                  with urllib.request.urlopen(request, timeout=30) as response:
+                      content = response.read().decode("utf8")
+              except Exception as e:
+                  print(f"Error: failed to fetch config from SUBSCRIBE_CONF url: {e}")
+                  sys.exit(1)
+          elif value.startswith("{"):
+              content = value
+          elif os.path.isfile(value):
+              with open(value, "r", encoding="utf8") as f:
+                  content = f.read()
+          else:
+              print("Error: secret 'SUBSCRIBE_CONF' must be a config URL, JSON string, or local file path")
               sys.exit(1)
 
           try:
               config = json.loads(content)
           except Exception as e:
-              print(f"Error: secret 'SUBSCRIBE_CONF' is not valid JSON: {e}")
+              print(f"Error: SUBSCRIBE_CONF content is not valid JSON: {e}")
               sys.exit(1)
 
           storage = config.get("storage", {})
