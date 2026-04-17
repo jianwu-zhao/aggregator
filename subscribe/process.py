@@ -243,7 +243,14 @@ def load_configs(
         if not isinstance(storage, dict) or not isinstance(groups, dict):
             return False
 
-        pushtool = push.get_instance(config=push.PushConfig.from_dict(storage))
+        pushconf = push.PushConfig.from_dict(storage)
+        if not pushconf:
+            logger.error(
+                f"invalid storage config, expect 'storage.engine' in {sorted(push.SUPPORTED_ENGINES)} and a valid 'storage' object"
+            )
+            return False
+
+        pushtool = push.get_instance(config=pushconf)
         if not isinstance(storage.get("items", {}), dict):
             logger.error(f"cannot found any valid storage config")
             return False
@@ -523,6 +530,10 @@ def aggregate(args: argparse.Namespace) -> None:
 
     # parse config
     server = utils.trim(args.server) or os.environ.get("SUBSCRIBE_CONF", "").strip()
+    if not server:
+        logger.error("environment 'SUBSCRIBE_CONF' cannot be empty")
+        sys.exit(1)
+
     process_config = load_configs(
         url=server,
         only_check=args.check,
@@ -532,7 +543,14 @@ def aggregate(args: argparse.Namespace) -> None:
     )
 
     storages = process_config.storage or {}
-    pushtool = push.get_instance(config=push.PushConfig.from_dict(storages))
+    pushconf = push.PushConfig.from_dict(storages)
+    if not pushconf:
+        logger.error(
+            f"invalid storage config, expect 'storage.engine' in {sorted(push.SUPPORTED_ENGINES)} and a valid 'storage' object"
+        )
+        sys.exit(1)
+
+    pushtool = push.get_instance(config=pushconf)
 
     # generate tasks
     tasks, groups, sites = assign(

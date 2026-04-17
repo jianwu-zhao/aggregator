@@ -50,6 +50,50 @@ jobs:
       - name: Install
         run: pip3 install -r requirements.txt
 
+      - name: Check
+        env:
+          SUBSCRIBE_CONF_CONTENT: ${{ secrets.SUBSCRIBE_CONF }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+
+          content = os.environ.get("SUBSCRIBE_CONF_CONTENT", "").strip()
+          if not content:
+              print("Error: secret 'SUBSCRIBE_CONF' cannot be empty")
+              sys.exit(1)
+
+          try:
+              config = json.loads(content)
+          except Exception as e:
+              print(f"Error: secret 'SUBSCRIBE_CONF' is not valid JSON: {e}")
+              sys.exit(1)
+
+          storage = config.get("storage", {})
+          engine = str(storage.get("engine", "")).strip().lower()
+          supported = {"gist", "imperial", "pastefy", "pastegg", "qbin", "local"}
+          if engine not in supported:
+              print(f"Error: config.storage.engine must be one of {sorted(supported)}, got: {engine or '<empty>'}")
+              sys.exit(1)
+
+          items = storage.get("items", {})
+          if not isinstance(items, dict) or not items:
+              print("Error: config.storage.items must be a non-empty object")
+              sys.exit(1)
+
+          groups = config.get("groups", {})
+          if not isinstance(groups, dict) or not groups:
+              print("Error: config.groups must be a non-empty object")
+              sys.exit(1)
+
+          if engine != "local" and not os.environ.get("PUSH_TOKEN", "").strip():
+              print("Error: secret 'PUSH_TOKEN' cannot be empty when storage.engine is not 'local'")
+              sys.exit(1)
+
+          print(f"Process config check passed, storage.engine={engine}")
+          PY
+
       - name: Process
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
