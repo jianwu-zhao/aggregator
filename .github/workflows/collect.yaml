@@ -67,7 +67,7 @@ jobs:
       - name: Collect
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            python -u subscribe/collect.py --max-proxies 100
+            python -u subscribe/collect.py --max-proxies 30
           else
             python -u subscribe/collect.py
           fi
