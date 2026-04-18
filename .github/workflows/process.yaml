@@ -114,12 +114,7 @@ jobs:
           PY
 
       - name: Process
-        run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            python -u subscribe/process.py --overwrite --max-proxies 100
-          else
-            python -u subscribe/process.py --overwrite
-          fi
+        run: python -u subscribe/process.py --overwrite --max-proxies 30
 
       - name: Timestamp
         run: date

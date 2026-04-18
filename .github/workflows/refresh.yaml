@@ -65,12 +65,7 @@ jobs:
           fi
 
       - name: Refresh
-        run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            python -u subscribe/collect.py --all --refresh --overwrite --skip --max-proxies 100
-          else
-            python -u subscribe/collect.py --all --refresh --overwrite --skip
-          fi
+        run: python -u subscribe/collect.py --all --refresh --overwrite --skip --max-proxies 30
 
       - name: Timestamp
         run: date
