@@ -65,7 +65,7 @@ jobs:
           fi
 
       - name: Collect
-        run: python -u subscribe/collect.py --max-proxies 30
+        run: python -u subscribe/collect.py 
 
       - name: Timestamp
         run: date
