@@ -3,216 +3,231 @@
 <title>ETF波段雷达</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#0f172a;color:#e2e8f0;padding:12px}
-h1{font-size:16px}
-.sub{color:#94a3b8;font-size:12px;margin:4px 0 10px}
-.e{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:700}
-.e.b{background:#166534;color:#86efac}
-.e.r{background:#7f1d1d;color:#fca5a5}
-.e.n{background:#451a03;color:#fdba74}
-table{width:100%;border-collapse:collapse;font-size:11px}
-th{background:#1e293b;padding:6px 4px;text-align:left;white-space:nowrap;font-size:10px;color:#94a3b8}
-td{padding:5px 4px;border-top:1px solid #1e293b;font-size:11px}
-tr:hover{background:#1e293b44}
-.n{font-family:monospace;text-align:right}
-.u{color:#86efac} .d{color:#fca5a5}
-b2{font-family:monospace;font-size:10px;color:#64748b}
-s{display:inline-block;padding:1px 5px;border-radius:4px;font-size:9px;background:#1e293b;color:#94a3b8}
-.p{border-left:2px solid #86efac} .n{border-left:2px solid #fca5a5}
-.f{font-size:10px;color:#475569;margin-top:12px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);background-attachment:fixed;color:#1e293b;padding:16px;min-height:100vh}
+.wrap{max-width:1600px;margin:0 auto}
+h1{font-size:20px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+.sub{color:rgba(255,255,255,.8);font-size:13px;margin:6px 0 16px}
+.e{display:inline-block;padding:3px 12px;border-radius:6px;font-size:12px;font-weight:700;background:rgba(255,255,255,.15);color:#fff}
+.card{background:#fff;border-radius:16px;padding:16px;box-shadow:0 10px 40px rgba(0,0,0,.15);overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:900px}
+th{background:#f8fafc;padding:10px 8px;text-align:left;white-space:nowrap;font-size:11px;color:#64748b;border-bottom:2px solid #e2e8f0}
+td{padding:10px 8px;border-bottom:1px solid #f1f5f9;font-size:12px;vertical-align:top}
+tr:hover{background:#f8fafc}
+.n{font-family:"JetBrains Mono",Consolas,monospace;text-align:right;white-space:nowrap}
+.u{color:#dc2626;font-weight:600} .d{color:#059669;font-weight:600}
+.name{font-weight:600;font-size:13px} .code{font-size:11px;color:#94a3b8;margin-top:2px;font-family:monospace}
+.prio{font-size:11px;color:#64748b;margin-top:3px}
+.grade{display:inline-block;padding:1px 8px;border-radius:4px;font-weight:700;font-size:11px}
+.grade-S{background:#dcfce7;color:#166534}
+.grade-A{background:#dbeafe;color:#1e40af}
+.grade-B{background:#fef3c7;color:#92400e}
+.grade-C{background:#f1f5f9;color:#475569}
+.anal{font-size:10px;color:#64748b;display:block;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:3px}
+.trend{font-size:11px;color:#475569;font-family:monospace;white-space:nowrap}
+.st{display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;margin:1px;background:#f1f5f9;color:#475569}
+.stat-cell{max-width:200px;line-height:1.6}
+.r-p{border-left:3px solid #dc2626} .r-n{border-left:3px solid #059669}
+.name-cell{min-width:160px}
+.f{font-size:11px;color:rgba(255,255,255,.6);margin-top:16px;text-align:center}
 </style></head><body>
+<div class=wrap>
 <h1>📡 ETF波段雷达</h1>
-<div class=sub>更新: 20260604 · 大盘: <span class="e bear">偏空震荡</span> 宽度33.3% · 多空比0.73</div>
-<table><thead><tr><th>标的</th><th>月±5</th><th>周±6</th><th>日±4</th><th>总分</th><th>RSI</th><th>5日</th><th>20日</th><th>信号</th></tr></thead>
-<tbody><tr class=p>
-<td><b>国泰中证煤炭ETF</b><br><b2>515220</b2></td>
-<td class=""u"">+0.5</td>
-<td class=""u"">+4.5</td>
-<td class=""u"">+4.0</td>
-<td class=""u""><b>+13.5</b></td>
-<td>73.5</td>
-<td class=""u"">+11.9%</td>
-<td class=""u"">+11.4%</td>
-<td><s>🚀主升</s></td></tr><tr class=p>
-<td><b>广发中证全指电力ETF</b><br><b2>159611</b2></td>
-<td class=""u"">+0.5</td>
-<td class=""u"">+3.5</td>
-<td class=""u"">+3.5</td>
-<td class=""u""><b>+11.2</b></td>
-<td>63.4</td>
-<td class=""u"">+4.2%</td>
-<td class=""u"">+8.7%</td>
-<td></td></tr><tr class=p>
-<td><b>易方达国证成长100ETF</b><br><b2>159259</b2></td>
-<td class=""u"">+0.5</td>
-<td class=""u"">+4.5</td>
-<td class=""u"">+1.5</td>
-<td class=""u""><b>+9.8</b></td>
-<td>60.3</td>
-<td class=""u"">+2.4%</td>
-<td class=""u"">+9.1%</td>
-<td><s>🚀主升</s></td></tr><tr class=p>
-<td><b>易方达中证消费电子主题ETF</b><br><b2>562950</b2></td>
-<td class=""u"">+0.5</td>
-<td class=""u"">+4.5</td>
-<td class=""u"">+0.5</td>
-<td class=""u""><b>+8.2</b></td>
-<td>63.8</td>
-<td class=""d"">-2.4%</td>
-<td class=""u"">+15.2%</td>
-<td><s>🚀主升</s></td></tr><tr class=p>
-<td><b>国泰中证全指通信设备ETF</b><br><b2>515880</b2></td>
-<td class=""d"">-2.2</td>
-<td class=""u"">+3.5</td>
-<td class=""u"">+4.0</td>
-<td class=""u""><b>+7.9</b></td>
-<td>63.3</td>
-<td class=""u"">+6.0%</td>
-<td class=""u"">+21.4%</td>
-<td></td></tr><tr class=p>
-<td><b>汇添富中证能源ETF</b><br><b2>159930</b2></td>
-<td class=""d"">+0.0</td>
-<td class=""u"">+0.5</td>
-<td class=""u"">+4.0</td>
-<td class=""u""><b>+6.8</b></td>
-<td>67.9</td>
-<td class=""u"">+5.6%</td>
-<td class=""u"">+3.2%</td>
-<td></td></tr><tr class=p>
-<td><b>国泰中证机床ETF</b><br><b2>159667</b2></td>
-<td class=""u"">+0.5</td>
-<td class=""u"">+3.0</td>
-<td class=""u"">+0.5</td>
-<td class=""u""><b>+6.0</b></td>
-<td>55.3</td>
-<td class=""d"">-2.2%</td>
-<td class=""u"">+7.9%</td>
-<td></td></tr><tr class=p>
-<td><b>华宝中证银行ETF</b><br><b2>512800</b2></td>
-<td class=""d"">-2.2</td>
-<td class=""d"">+0.0</td>
-<td class=""u"">+3.5</td>
-<td class=""u""><b>+1.9</b></td>
-<td>49.4</td>
-<td class=""u"">+2.9%</td>
-<td class=""d"">-0.1%</td>
-<td></td></tr><tr class=p>
-<td><b>华夏上证科创板半导体材料设备ET</b><br><b2>588170</b2></td>
-<td class=""u"">+0.5</td>
-<td class=""u"">+3.0</td>
-<td class=""d"">-3.0</td>
-<td class=""u""><b>+0.8</b></td>
-<td>53.5</td>
-<td class=""d"">-7.9%</td>
-<td class=""u"">+17.4%</td>
-<td></td></tr><tr class=p>
-<td><b>华夏中证机器人ETF</b><br><b2>562500</b2></td>
-<td class=""u"">+0.5</td>
-<td class=""u"">+3.0</td>
-<td class=""d"">-3.0</td>
-<td class=""u""><b>+0.8</b></td>
-<td>49.8</td>
-<td class=""d"">-3.3%</td>
-<td class=""u"">+2.7%</td>
-<td></td></tr><tr class=p>
-<td><b>华夏中证电网设备主题ETF</b><br><b2>159326</b2></td>
-<td class=""d"">+0.0</td>
-<td class=""d"">+0.0</td>
-<td class=""u"">+0.5</td>
-<td class=""u""><b>+0.8</b></td>
-<td>48.0</td>
-<td class=""u"">+0.9%</td>
-<td class=""u"">+0.8%</td>
-<td></td></tr><tr class=n>
-<td><b>易方达中证海外中国互联网50(Q</b><br><b2>513050</b2></td>
-<td class=""d"">-2.7</td>
-<td class=""d"">-2.5</td>
-<td class=""u"">+0.5</td>
-<td class=""d""><b>-7.1</b></td>
-<td>38.8</td>
-<td class=""u"">+5.2%</td>
-<td class=""d"">-6.6%</td>
-<td></td></tr><tr class=n>
-<td><b>酒ETF</b><br><b2>512690</b2></td>
-<td class=""d"">-2.7</td>
-<td class=""d"">-2.5</td>
-<td class=""d"">+0.0</td>
-<td class=""d""><b>-7.8</b></td>
-<td>36.9</td>
-<td class=""u"">+0.2%</td>
-<td class=""d"">-7.1%</td>
-<td></td></tr><tr class=n>
-<td><b>嘉实中证稀有金属主题ETF</b><br><b2>562800</b2></td>
-<td class=""d"">+0.0</td>
-<td class=""d"">-3.0</td>
-<td class=""d"">-2.5</td>
-<td class=""d""><b>-8.2</b></td>
-<td>40.3</td>
-<td class=""d"">-1.0%</td>
-<td class=""d"">-10.6%</td>
-<td></td></tr><tr class=n>
-<td><b>嘉实中证稀土产业ETF</b><br><b2>516150</b2></td>
-<td class=""d"">+0.0</td>
-<td class=""d"">-3.0</td>
-<td class=""d"">-2.5</td>
-<td class=""d""><b>-8.2</b></td>
-<td>41.0</td>
-<td class=""d"">-1.7%</td>
-<td class=""d"">-6.8%</td>
-<td></td></tr><tr class=n>
-<td><b>国泰中证军工ETF</b><br><b2>512660</b2></td>
-<td class=""d"">+0.0</td>
-<td class=""d"">-3.0</td>
-<td class=""d"">-2.5</td>
-<td class=""d""><b>-8.2</b></td>
-<td>24.1</td>
-<td class=""d"">-5.3%</td>
-<td class=""d"">-12.0%</td>
-<td></td></tr><tr class=n>
-<td><b>华泰柏瑞中证光伏产业ETF</b><br><b2>515790</b2></td>
-<td class=""d"">+0.0</td>
-<td class=""d"">-3.0</td>
-<td class=""d"">-3.0</td>
-<td class=""d""><b>-9.0</b></td>
-<td>35.7</td>
-<td class=""d"">-5.6%</td>
-<td class=""d"">-3.3%</td>
-<td></td></tr><tr class=n>
-<td><b>华安黄金ETF</b><br><b2>518880</b2></td>
-<td class=""d"">+0.0</td>
-<td class=""d"">-3.0</td>
-<td class=""d"">-3.0</td>
-<td class=""d""><b>-9.0</b></td>
-<td>32.5</td>
-<td class=""u"">+1.6%</td>
-<td class=""d"">-6.3%</td>
-<td></td></tr><tr class=n>
-<td><b>华夏中证动漫游戏ETF</b><br><b2>159869</b2></td>
-<td class=""d"">-2.7</td>
-<td class=""d"">-3.0</td>
-<td class=""d"">-2.5</td>
-<td class=""d""><b>-12.3</b></td>
-<td>18.7</td>
-<td class=""d"">-2.9%</td>
-<td class=""d"">-16.0%</td>
-<td></td></tr><tr class=n>
-<td><b>广发中证传媒ETF</b><br><b2>512980</b2></td>
-<td class=""d"">-2.7</td>
-<td class=""d"">-3.0</td>
-<td class=""d"">-3.0</td>
-<td class=""d""><b>-13.0</b></td>
-<td>28.0</td>
-<td class=""d"">-1.2%</td>
-<td class=""d"">-14.2%</td>
-<td></td></tr><tr class=n>
-<td><b>南方中证全指房地产ETF</b><br><b2>512200</b2></td>
-<td class=""d"">-2.7</td>
-<td class=""d"">-3.0</td>
-<td class=""d"">-3.0</td>
-<td class=""d""><b>-13.0</b></td>
-<td>22.4</td>
-<td class=""d"">-1.9%</td>
-<td class=""d"">-10.5%</td>
-<td></td></tr></tbody></table>
-<div class=f>⚠️ 仅供学习参考，不构成投资建议</div>
+<div class=sub>更新: 20260604 · 大盘: <span class=e>偏空震荡</span> 宽度33.3% · 多空比0.73</div>
+<div class=card>
+<table><thead><tr>
+<th>标的 / 雷达优先级</th><th>趋势</th><th>月线(±5)</th><th>周线(±6)</th><th>日线(±4)</th><th>参考止损</th><th>总分</th><th>状态</th>
+</tr></thead>
+<tbody><tr class="r-p">
+<td class="name-cell"><div class="name">国泰中证煤炭ETF</div><div class="code">515220 · 风险RPS 100</div><div class="prio">雷达优先级 85.2 · <span class="grade grade-S">S</span></div></td>
+<td class="trend">+11.4→+11.9</td>
+<td class="n u">+0.5<br><span class="anal">月线震荡(间距1.0%)</span></td>
+<td class="n u">+4.5<br><span class="anal">主升加速：多头排列+斜率共振</span></td>
+<td class="n u">+4.0<br><span class="anal">真突破：放量上轨 短均多头</span></td>
+<td class="n">1.289  🛡️ 7.9%</td>
+<td class="n u"><b>+13.5</b></td>
+<td class="stat-cell"><span class="st">🔥 极强波段多头</span> <span class="st">🚀 主升浪</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">广发中证全指电力ETF</div><div class="code">159611 · 风险RPS 95</div><div class="prio">雷达优先级 77.4 · <span class="grade grade-A">A</span></div></td>
+<td class="trend">+8.7→+4.2</td>
+<td class="n u">+0.5<br><span class="anal">月线震荡(间距1.0%)</span></td>
+<td class="n u">+3.5<br><span class="anal">平台突破：收上前高+量能充足</span></td>
+<td class="n u">+3.5<br><span class="anal">真突破：放量上轨 短均多头</span></td>
+<td class="n">1.158  🛡️ 7.3%</td>
+<td class="n u"><b>+11.2</b></td>
+<td class="stat-cell"><span class="st">📈 波段多头</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">易方达国证成长100ETF</div><div class="code">159259 · 风险RPS 90</div><div class="prio">雷达优先级 72.1 · <span class="grade grade-A">A</span></div></td>
+<td class="trend">+9.1→+2.4</td>
+<td class="n u">+0.5<br><span class="anal">月线震荡(间距1.0%)</span></td>
+<td class="n u">+4.5<br><span class="anal">主升加速：多头排列+斜率共振</span></td>
+<td class="n u">+1.5<br><span class="anal">盘整中轨</span></td>
+<td class="n">1.376  🛡️ 9.2%</td>
+<td class="n u"><b>+9.8</b></td>
+<td class="stat-cell"><span class="st">📈 波段多头</span> <span class="st">🚀 主升浪</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">国泰中证全指通信设备ETF</div><div class="code">515880 · 风险RPS 81</div><div class="prio">雷达优先级 65.8 · <span class="grade grade-A">A</span></div></td>
+<td class="trend">+21.4→+6.0</td>
+<td class="n d">-2.2<br><span class="anal">月线空头结构(间距4.4%)</span></td>
+<td class="n u">+3.5<br><span class="anal">平台突破：收上前高+量能充足</span></td>
+<td class="n u">+4.0<br><span class="anal">真突破：放量上轨 短均多头</span></td>
+<td class="n">1.539  🛡️ 10.3%</td>
+<td class="n u"><b>+7.9</b></td>
+<td class="stat-cell"><span class="st">📈 波段多头</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">易方达中证消费电子主题ETF</div><div class="code">562950 · 风险RPS 86</div><div class="prio">雷达优先级 58.9 · <span class="grade grade-B">B</span></div></td>
+<td class="trend">+15.2→-2.4</td>
+<td class="n u">+0.5<br><span class="anal">月线震荡(间距1.0%)</span></td>
+<td class="n u">+4.5<br><span class="anal">主升加速：多头排列+斜率共振</span></td>
+<td class="n u">+0.5<br><span class="anal">盘整中轨</span></td>
+<td class="n">1.628  🛡️ 10.3%</td>
+<td class="n u"><b>+8.2</b></td>
+<td class="stat-cell"><span class="st">📈 波段多头</span> <span class="st">🚀 主升浪</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">汇添富中证能源ETF</div><div class="code">159930 · 风险RPS 76</div><div class="prio">雷达优先级 53.6 · <span class="grade grade-B">B</span></div></td>
+<td class="trend">+3.2→+5.6</td>
+<td class="n d">+0.0<br><span class="anal">月线震荡</span></td>
+<td class="n u">+0.5<br><span class="anal">多头回调：趋势向上</span></td>
+<td class="n u">+4.0<br><span class="anal">真突破：放量上轨 短均多头</span></td>
+<td class="n">1.690  🛡️ 5.3%</td>
+<td class="n u"><b>+6.8</b></td>
+<td class="stat-cell"><span class="st">📈 波段多头</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">国泰中证机床ETF</div><div class="code">159667 · 风险RPS 71</div><div class="prio">雷达优先级 51.0 · <span class="grade grade-B">B</span></div></td>
+<td class="trend">+7.9→-2.2</td>
+<td class="n u">+0.5<br><span class="anal">月线震荡(间距1.0%)</span></td>
+<td class="n u">+3.0<br><span class="anal">平台突破：收上前高+量能充足</span></td>
+<td class="n u">+0.5<br><span class="anal">盘整中轨</span></td>
+<td class="n">2.129  🛡️ 9.5%</td>
+<td class="n u"><b>+6.0</b></td>
+<td class="stat-cell"><span class="st">📈 波段多头</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">华宝中证银行ETF</div><div class="code">512800 · 风险RPS 67</div><div class="prio">雷达优先级 36.8 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-0.1→+2.9</td>
+<td class="n d">-2.2<br><span class="anal">月线空头结构(间距4.4%)</span></td>
+<td class="n d">+0.0<br><span class="anal">弱势震荡</span></td>
+<td class="n u">+3.5<br><span class="anal">真突破：放量上轨 短均多头 ATR过低1.3%</span></td>
+<td class="n">0.761  🛡️ 2.9%</td>
+<td class="n u"><b>+1.9</b></td>
+<td class="stat-cell"><span class="st">⚖️ 多空震荡</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">华夏上证科创板半导体材料设备ET</div><div class="code">588170 · 风险RPS 62</div><div class="prio">雷达优先级 32.6 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">+17.4→-7.9</td>
+<td class="n u">+0.5<br><span class="anal">月线震荡(间距1.0%)</span></td>
+<td class="n u">+3.0<br><span class="anal">平台突破：收上前高+量能充足</span></td>
+<td class="n d">-3.0<br><span class="anal">真破位：放量下轨 短均空头 ATR偏热7.4%</span></td>
+<td class="n">2.010  🛡️ 16.3%</td>
+<td class="n u"><b>+0.8</b></td>
+<td class="stat-cell"><span class="st">⚖️ 多空震荡</span> <span class="st">⚠️ 周强日弱</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">华夏中证机器人ETF</div><div class="code">562500 · 风险RPS 62</div><div class="prio">雷达优先级 32.6 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">+2.7→-3.3</td>
+<td class="n u">+0.5<br><span class="anal">月线震荡(间距1.0%)</span></td>
+<td class="n u">+3.0<br><span class="anal">平台突破：收上前高+量能充足</span></td>
+<td class="n d">-3.0<br><span class="anal">真破位：放量下轨 短均空头</span></td>
+<td class="n">1.038  🛡️ 7.9%</td>
+<td class="n u"><b>+0.8</b></td>
+<td class="stat-cell"><span class="st">⚖️ 多空震荡</span> <span class="st">⚠️ 周强日弱</span></td>
+</tr><tr class="r-p">
+<td class="name-cell"><div class="name">华夏中证电网设备主题ETF</div><div class="code">159326 · 风险RPS 62</div><div class="prio">雷达优先级 32.6 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">+0.8→+0.9</td>
+<td class="n d">+0.0<br><span class="anal">月线震荡</span></td>
+<td class="n d">+0.0<br><span class="anal">弱势震荡</span></td>
+<td class="n u">+0.5<br><span class="anal">盘整中轨</span></td>
+<td class="n">1.940  🛡️ 7.3%</td>
+<td class="n u"><b>+0.8</b></td>
+<td class="stat-cell"><span class="st">⚖️ 多空震荡</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">易方达中证海外中国互联网50(Q</div><div class="code">513050 · 风险RPS 48</div><div class="prio">雷达优先级 5.3 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-6.6→+5.2</td>
+<td class="n d">-2.7<br><span class="anal">月线空头结构(间距5.4%)</span></td>
+<td class="n d">-2.5<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n u">+0.5<br><span class="anal">盘整中轨</span></td>
+<td class="n">1.085  🛡️ 5.9%</td>
+<td class="n d"><b>-7.1</b></td>
+<td class="stat-cell"><span class="st">↘️ 偏空走弱</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">酒ETF</div><div class="code">512690 · 风险RPS 43</div><div class="prio">雷达优先级 2.7 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-7.1→+0.2</td>
+<td class="n d">-2.7<br><span class="anal">月线空头结构(间距5.4%)</span></td>
+<td class="n d">-2.5<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n d">+0.0<br><span class="anal">空头通道</span></td>
+<td class="n">0.417  🛡️ 6.2%</td>
+<td class="n d"><b>-7.8</b></td>
+<td class="stat-cell"><span class="st">↘️ 偏空走弱</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">嘉实中证稀有金属主题ETF</div><div class="code">562800 · 风险RPS 38</div><div class="prio">雷达优先级 1.1 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-10.6→-1.0</td>
+<td class="n d">+0.0<br><span class="anal">月线震荡</span></td>
+<td class="n d">-3.0<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n d">-2.5<br><span class="anal">真破位：放量下轨 短均空头</span></td>
+<td class="n">0.979  🛡️ 8.8%</td>
+<td class="n d"><b>-8.2</b></td>
+<td class="stat-cell"><span class="st">📉 波段空头</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">嘉实中证稀土产业ETF</div><div class="code">516150 · 风险RPS 38</div><div class="prio">雷达优先级 1.1 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-6.8→-1.7</td>
+<td class="n d">+0.0<br><span class="anal">月线震荡</span></td>
+<td class="n d">-3.0<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n d">-2.5<br><span class="anal">真破位：放量下轨 短均空头</span></td>
+<td class="n">1.812  🛡️ 7.7%</td>
+<td class="n d"><b>-8.2</b></td>
+<td class="stat-cell"><span class="st">📉 波段空头</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">国泰中证军工ETF</div><div class="code">512660 · 风险RPS 38</div><div class="prio">雷达优先级 1.1 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-12.0→-5.3</td>
+<td class="n d">+0.0<br><span class="anal">月线震荡</span></td>
+<td class="n d">-3.0<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n d">-2.5<br><span class="anal">真破位：放量下轨 短均空头</span></td>
+<td class="n">1.186  🛡️ 6.8%</td>
+<td class="n d"><b>-8.2</b></td>
+<td class="stat-cell"><span class="st">📉 波段空头</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">华泰柏瑞中证光伏产业ETF</div><div class="code">515790 · 风险RPS 24</div><div class="prio">雷达优先级 0.0 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-3.3→-5.6</td>
+<td class="n d">+0.0<br><span class="anal">月线震荡</span></td>
+<td class="n d">-3.0<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n d">-3.0<br><span class="anal">真破位：放量下轨 短均空头</span></td>
+<td class="n">0.985  🛡️ 7.5%</td>
+<td class="n d"><b>-9.0</b></td>
+<td class="stat-cell"><span class="st">📉 波段空头</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">华安黄金ETF</div><div class="code">518880 · 风险RPS 24</div><div class="prio">雷达优先级 0.0 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-6.3→+1.6</td>
+<td class="n d">+0.0<br><span class="anal">月线震荡</span></td>
+<td class="n d">-3.0<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n d">-3.0<br><span class="anal">真破位：放量下轨 短均空头</span></td>
+<td class="n">8.975  🛡️ 3.3%</td>
+<td class="n d"><b>-9.0</b></td>
+<td class="stat-cell"><span class="st">📉 波段空头</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">华夏中证动漫游戏ETF</div><div class="code">159869 · 风险RPS 14</div><div class="prio">雷达优先级 0.0 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-16.0→-2.9</td>
+<td class="n d">-2.7<br><span class="anal">月线空头结构(间距5.4%)</span></td>
+<td class="n d">-3.0<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n d">-2.5<br><span class="anal">真破位：放量下轨 短均空头 MACD底背离</span></td>
+<td class="n">1.047  🛡️ 6.8%</td>
+<td class="n d"><b>-12.3</b></td>
+<td class="stat-cell"><span class="st">❄️ 极弱波段空头</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">广发中证传媒ETF</div><div class="code">512980 · 风险RPS 10</div><div class="prio">雷达优先级 0.0 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-14.2→-1.2</td>
+<td class="n d">-2.7<br><span class="anal">月线空头结构(间距5.4%)</span></td>
+<td class="n d">-3.0<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n d">-3.0<br><span class="anal">真破位：放量下轨 短均空头</span></td>
+<td class="n">0.826  🛡️ 7.3%</td>
+<td class="n d"><b>-13.0</b></td>
+<td class="stat-cell"><span class="st">❄️ 极弱波段空头</span></td>
+</tr><tr class="r-n">
+<td class="name-cell"><div class="name">南方中证全指房地产ETF</div><div class="code">512200 · 风险RPS 10</div><div class="prio">雷达优先级 0.0 · <span class="grade grade-C">C</span></div></td>
+<td class="trend">-10.5→-1.9</td>
+<td class="n d">-2.7<br><span class="anal">月线空头结构(间距5.4%)</span></td>
+<td class="n d">-3.0<br><span class="anal">下跌延续：跌破20周线</span></td>
+<td class="n d">-3.0<br><span class="anal">真破位：放量下轨 短均空头</span></td>
+<td class="n">1.241  🛡️ 5.7%</td>
+<td class="n d"><b>-13.0</b></td>
+<td class="stat-cell"><span class="st">❄️ 极弱波段空头</span></td>
+</tr></tbody></table>
+</div>
+<div class=f>💡 顺大势、看节奏、抓时机 — 破位必止损！ ⚠️ 仅供学习参考</div>
+</div>
 </body></html>
