@@ -1,0 +1,34 @@
+name: Quant Report Daily
+
+on:
+  schedule:
+    - cron: '30 7 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install akshare pandas numpy
+
+      - name: Generate quant report
+        run: |
+          mkdir -p output
+          python quant_system.py --date $(date +%Y%m%d)
+          cp output/quant-report.html output/index.html || true
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          destination_dir: quant
+          keep_files: false
