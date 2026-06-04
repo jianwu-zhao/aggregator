@@ -1,109 +1,120 @@
 <!doctype html>
-<html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ETF波段雷达</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);background-attachment:fixed;color:#1e293b;padding:16px;min-height:100vh}
-.wrap{max-width:1600px;margin:0 auto}
-h1{font-size:20px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.2)}
-.sub{color:rgba(255,255,255,.8);font-size:13px;margin:6px 0 16px}
-.e{display:inline-block;padding:3px 12px;border-radius:6px;font-size:12px;font-weight:700;background:rgba(255,255,255,.15);color:#fff}
-.card{background:#fff;border-radius:16px;padding:16px;box-shadow:0 10px 40px rgba(0,0,0,.15);overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:900px}
-th{background:#f8fafc;padding:10px 8px;text-align:left;white-space:nowrap;font-size:11px;color:#64748b;border-bottom:2px solid #e2e8f0}
-td{padding:10px 8px;border-bottom:1px solid #f1f5f9;font-size:12px;vertical-align:top}
-tr:hover{background:#f8fafc}
-.n{font-family:"JetBrains Mono",Consolas,monospace;text-align:right;white-space:nowrap}
-.u{color:#dc2626;font-weight:600} .d{color:#059669;font-weight:600}
-.name{font-weight:600;font-size:13px} .code{font-size:11px;color:#94a3b8;margin-top:2px;font-family:monospace}
-.prio{font-size:11px;color:#64748b;margin-top:3px}
-.grade{display:inline-block;padding:1px 8px;border-radius:4px;font-weight:700;font-size:11px}
-.grade-S{background:#dcfce7;color:#166534}
-.grade-A{background:#dbeafe;color:#1e40af}
-.grade-B{background:#fef3c7;color:#92400e}
-.grade-C{background:#f1f5f9;color:#475569}
-.anal{font-size:10px;color:#64748b;display:block;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:3px}
-.trend{font-size:11px;color:#475569;font-family:monospace;white-space:nowrap}
-.st{display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;margin:1px;background:#f1f5f9;color:#475569}
-.stat-cell{max-width:200px;line-height:1.6}
-.r-p{border-left:3px solid #dc2626} .r-n{border-left:3px solid #059669}
-.name-cell{min-width:160px}
-.buy-cell{text-align:center;min-width:100px}
-.buy-strong{color:#dc2626;font-weight:700;font-size:13px}
-.buy-watch{color:#d97706;font-weight:600;font-size:12px}
-.buy-wait{color:#94a3b8;font-size:12px}
-.buy-detail{font-size:10px;color:#64748b;display:block;margin-top:4px;line-height:1.4}
-.f{font-size:11px;color:rgba(255,255,255,.6);margin-top:16px;text-align:center}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#0f172a;color:#0f172a}.hero{background:radial-gradient(circle at 20% 20%,#4f46e5 0,#312e81 32%,#0f172a 78%);padding:22px 14px 26px;color:#fff}.wrap{max-width:1500px;margin:0 auto}h1{margin:0;font-size:24px;letter-spacing:.5px}.sub{margin-top:8px;color:#cbd5e1;font-size:13px;line-height:1.8}.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:800}.bull{background:#fee2e2;color:#991b1b}.bear{background:#dcfce7;color:#166534}.neutral{background:#e0e7ff;color:#3730a3}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.kpi{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:14px;backdrop-filter:blur(10px)}.kpi label{display:block;color:#cbd5e1;font-size:12px}.kpi strong{display:block;margin-top:8px;font-size:20px;color:#fff}.kpi small{display:block;margin-top:4px;color:#94a3b8}.main{padding:16px 14px 28px}.card{background:#fff;border-radius:18px;box-shadow:0 16px 48px rgba(2,6,23,.22);overflow:hidden}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 16px;border-bottom:1px solid #e2e8f0;background:#f8fafc}.toolbar h2{margin:0;font-size:16px}.hint{color:#64748b;font-size:12px;line-height:1.7}.tablebox{overflow-x:auto}table{width:100%;min-width:1180px;border-collapse:collapse}th{position:sticky;top:0;z-index:1;background:#f8fafc;color:#64748b;font-size:12px;text-align:left;padding:11px 10px;border-bottom:1px solid #e2e8f0;white-space:nowrap}td{padding:12px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top;font-size:12px}tr:hover{background:#f8fafc}.rank{width:48px;color:#94a3b8;font-family:ui-monospace,Consolas,monospace}.asset{min-width:175px}.asset-name{font-weight:800;font-size:14px}.asset-code,.priority{margin-top:4px;color:#64748b;font-family:ui-monospace,Consolas,monospace;font-size:11px}.grade{display:inline-block;margin-left:5px;padding:1px 7px;border-radius:6px;font-weight:900}.grade-S{background:#fee2e2;color:#991b1b}.grade-A{background:#ffedd5;color:#9a3412}.grade-B{background:#dbeafe;color:#1e40af}.grade-C{background:#f1f5f9;color:#475569}.act{display:inline-block;padding:5px 10px;border-radius:10px;font-weight:900;white-space:nowrap}.act-buy{background:#fee2e2;color:#b91c1c}.act-watch{background:#fef3c7;color:#a16207}.act-wait{background:#f1f5f9;color:#64748b}.action small,.score small,.period small,.metric small,.risk small{display:block;margin-top:6px;line-height:1.45;color:#64748b}.score b{font-size:20px;font-family:ui-monospace,Consolas,monospace}.period b{font-family:ui-monospace,Consolas,monospace;font-size:15px}.pos{color:#dc2626}.neg{color:#059669}.metric b,.risk b{font-family:ui-monospace,Consolas,monospace}.risk small{white-space:nowrap}.tag{display:inline-block;margin:2px 3px 2px 0;padding:3px 7px;border-radius:8px;background:#eef2ff;color:#3730a3;font-size:11px}.row-up{box-shadow:inset 3px 0 0 #dc2626}.row-down{box-shadow:inset 3px 0 0 #059669}.footer{color:#94a3b8;text-align:center;font-size:12px;line-height:1.8;margin-top:16px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.legend span{padding:5px 9px;border-radius:999px;background:#f1f5f9;color:#475569;font-size:12px}@media(max-width:760px){.hero{padding:18px 12px}h1{font-size:21px}.grid{grid-template-columns:repeat(2,1fr)}.kpi{padding:12px}.kpi strong{font-size:18px}.main{padding:12px}.toolbar{display:block}.card{border-radius:14px}table{min-width:1050px}th,td{padding:10px 8px}.footer{text-align:left}.sub{font-size:12px}}
 </style></head><body>
-<div class=wrap>
+<section class="hero"><div class="wrap">
 <h1>📡 ETF波段雷达</h1>
-<div class=sub>更新: 20260604 · 大盘: <span class=e>偏空震荡</span> 宽度33.3% · 多空比0.73 · 市场: 偏多(MA60+3.7%) · 聚类分散</div>
-<div class=card>
-<table><thead><tr>
-<th>标的 / 雷达优先级</th><th>趋势</th><th>月线(±5)</th><th>周线(±6)</th><th>日线(±4)</th><th>参考止损</th><th>总分*</th><th>状态</th><th>买入参考</th>
-</tr></thead>
-<tbody><tr class="r-p">
-<td class="name-cell"><div class="name">易方达中证消费电子主题ETF</div><div class="code">562950 · 风险RPS 100</div><div class="prio">雷达优先级 79.3 · <span class="grade grade-A">A</span></div></td>
-<td class="trend">+15.2→-2.4</td>
-<td class="n u">+0.5<br><span class="anal">月线震荡</span></td>
-<td class="n u">+4.5<br><span class="anal">主升加速：多头排列+斜率共振</span></td>
-<td class="n u">+0.5<br><span class="anal">盘整中轨</span></td>
-<td class="n">1.628  🛡️ 10.3%</td>
-<td class="n u"><b>+16.4</b><br><span class="anal">动量0.81 趋势+20.6%</span></td>
-<td class="stat-cell"><span class="st">🔥 极强波段多头</span> <span class="st">⚡强动量</span> <span class="st">📈主升趋势</span> <span class="st">🏆高夏普</span> <span class="st">🚀 主升浪</span></td>
-<td class="buy-cell"><span class="buy-strong">📈 买入</span><br><span class="buy-detail">入场1.816<br>止盈2.098/2.379<br>R/R 1:2.2</span></td>
-</tr><tr class="r-p">
-<td class="name-cell"><div class="name">国泰中证煤炭ETF</div><div class="code">515220 · 风险RPS 95</div><div class="prio">雷达优先级 85.0 · <span class="grade grade-S">S</span></div></td>
-<td class="trend">+11.4→+11.9</td>
-<td class="n u">+0.5<br><span class="anal">月线震荡</span></td>
-<td class="n u">+4.5<br><span class="anal">主升加速：多头排列+斜率共振</span></td>
-<td class="n u">+4.0<br><span class="anal">真突破：放量上轨 短均多头</span></td>
-<td class="n">1.289  🛡️ 7.9%</td>
-<td class="n u"><b>+15.7</b><br><span class="anal">动量0.42 趋势+0.3%</span></td>
-<td class="stat-cell"><span class="st">🔥 极强波段多头</span> <span class="st">⚡强动量</span> <span class="st">🚀 主升浪</span></td>
-<td class="buy-cell"><span class="buy-strong">📈 买入</span><br><span class="buy-detail">入场1.400<br>止盈1.566/1.733<br>R/R 1:2.2</span></td>
-</tr><tr class="r-p">
-<td class="name-cell"><div class="name">易方达国证成长100ETF</div><div class="code">159259 · 风险RPS 90</div><div class="prio">雷达优先级 84.8 · <span class="grade grade-S">S</span></div></td>
-<td class="trend">+9.1→+2.4</td>
-<td class="n u">+0.5<br><span class="anal">月线震荡</span></td>
-<td class="n u">+4.5<br><span class="anal">主升加速：多头排列+斜率共振</span></td>
-<td class="n u">+1.5<br><span class="anal">盘整中轨</span></td>
-<td class="n">1.376  🛡️ 9.2%</td>
-<td class="n u"><b>+15.6</b><br><span class="anal">动量0.62 趋势+13.8%</span></td>
-<td class="stat-cell"><span class="st">🔥 极强波段多头</span> <span class="st">⚡强动量</span> <span class="st">📈主升趋势</span> <span class="st">🏆高夏普</span> <span class="st">🚀 主升浪</span></td>
-<td class="buy-cell"><span class="buy-strong">📈 买入</span><br><span class="buy-detail">入场1.516<br>止盈1.726/1.936<br>R/R 1:2.2</span></td>
-</tr><tr class="r-p">
-<td class="name-cell"><div class="name">华夏中证机器人ETF</div><div class="code">562500 · 风险RPS 62</div><div class="prio">雷达优先级 42.2 · <span class="grade grade-C">C</span></div></td>
-<td class="trend">+2.7→-3.3</td>
-<td class="n u">+0.5<br><span class="anal">月线震荡</span></td>
-<td class="n u">+3.0<br><span class="anal">平台突破：收上前高+量能充足</span></td>
-<td class="n d">-3.0<br><span class="anal">真破位：放量下轨 短均空头</span></td>
-<td class="n">1.038  🛡️ 7.9%</td>
-<td class="n u"><b>+4.1</b><br><span class="anal">动量0.21 趋势+11.2%</span></td>
-<td class="stat-cell"><span class="st">↗️ 偏多企稳</span> <span class="st">📈主升趋势</span> <span class="st">⚠️ 周强日弱</span></td>
-<td class="buy-cell"><span class="buy-watch">👀 观察</span><br><span class="buy-detail">回调1.093<br>止损1.038<br>距3.0%</span></td>
-</tr><tr class="r-n">
-<td class="name-cell"><div class="name">嘉实中证稀有金属主题ETF</div><div class="code">562800 · 风险RPS 48</div><div class="prio">雷达优先级 4.0 · <span class="grade grade-C">C</span></div></td>
-<td class="trend">-10.6→-1.0</td>
-<td class="n d">+0.0<br><span class="anal">月线震荡</span></td>
-<td class="n d">-3.0<br><span class="anal">下跌延续：跌破20周线</span></td>
-<td class="n d">-2.5<br><span class="anal">真破位：放量下轨 短均空头</span></td>
-<td class="n">0.979  🛡️ 8.8%</td>
-<td class="n d"><b>-8.7</b><br><span class="anal">动量-0.20 趋势+3.0%</span></td>
-<td class="stat-cell"><span class="st">↘️ 偏空走弱</span></td>
-<td class="buy-cell"><span class="buy-wait">⏳ 观望</span><br><span class="buy-detail">等待信号</span></td>
-</tr><tr class="r-n">
-<td class="name-cell"><div class="name">易方达中证海外中国互联网50(Q</div><div class="code">513050 · 风险RPS 38</div><div class="prio">雷达优先级 2.9 · <span class="grade grade-C">C</span></div></td>
-<td class="trend">-6.6→+5.2</td>
-<td class="n d">-2.7<br><span class="anal">月线空头结构</span></td>
-<td class="n d">-2.5<br><span class="anal">下跌延续：跌破20周线</span></td>
-<td class="n u">+0.5<br><span class="anal">盘整中轨</span></td>
-<td class="n">1.085  🛡️ 5.9%</td>
-<td class="n d"><b>-9.0</b><br><span class="anal">动量-0.28 趋势-3.0%</span></td>
-<td class="stat-cell"><span class="st">↘️ 偏空走弱</span></td>
-<td class="buy-cell"><span class="buy-wait">⏳ 观望</span><br><span class="buy-detail">等待信号</span></td>
-</tr></tbody></table>
+<div class="sub">更新：20260604　大盘：<span class="badge bull">偏空震荡</span>　市场：偏多(MA60+3.7%)　建议仓位：100%　宽度：38.1%　多空比：0.82</div>
+<div class="grid">
+  <div class="kpi"><label>强买信号</label><strong>7 只</strong><small>增强分&gt;8 且周线&gt;2</small></div>
+  <div class="kpi"><label>观察信号</label><strong>2 只</strong><small>等回调/突破确认</small></div>
+  <div class="kpi"><label>弱势/观望</label><strong>12 只</strong><small>暂不追高</small></div>
+  <div class="kpi"><label>展示/全池</label><strong>6/21</strong><small>已做聚类分散化</small></div>
+  <div class="kpi"><label>今日Top</label><strong style="font-size:15px">易方达国证成 +19.7 / 易方达中证消 +17.0 / 华夏上证科创 +16.2</strong><small>按增强总分排序</small></div>
 </div>
-<div class=f>💡 顺大势、看节奏、抓时机 — 破位必止损！ ⚠️ 仅供学习参考</div>
-</div>
+</div></section>
+<main class="main"><div class="wrap"><div class="card">
+<div class="toolbar"><div><h2>候选列表</h2><div class="hint">总分* = 原多周期分 + 动量夏普 + 趋势强度；红色为上涨/偏多，绿色为下跌/偏空。</div></div><div class="legend"><span>📈 买入：可小仓试错</span><span>👀 观察：等回调/突破</span><span>🛡️ 止损：ATR×2.2</span></div></div>
+<div class="tablebox"><table><thead><tr>
+<th>序</th><th>标的</th><th>操作建议</th><th>总分*</th><th>月线</th><th>周线</th><th>日线</th><th>动量/趋势</th><th>风控</th><th>状态</th>
+</tr></thead><tbody>
+<tr class="row-up">
+<td class="rank">#1</td>
+<td class="asset">
+  <div class="asset-name">易方达国证成长100ETF</div>
+  <div class="asset-code">159259 · RPS 100</div>
+  <div class="priority">雷达 97.1 <span class="grade grade-S">S</span></div>
+</td>
+<td class="action"><span class="act act-buy">📈 买入</span><small>现价/突破入场<br>止盈 1.753 / 1.967<br>止损 1.398</small></td>
+<td class="score pos"><b>+19.7</b><small>原始 +13.5</small></td>
+<td class="period"><b class="pos">+0.5</b><small>震荡修复</small></td>
+<td class="period"><b class="pos">+4.5</b><small>主升加速</small></td>
+<td class="period"><b class="pos">+4.0</b><small>真突破</small></td>
+<td class="metric"><b>20日+11.3% / 5日+5.9%</b><small>动量夏普 +0.69<br>趋势强度 +13.7%</small></td>
+<td class="risk"><b>1.398<small>9.2%</small></b><small>ATR 4.2%<br>年波动 33.5%</small></td>
+<td class="tags"><span class="tag">极强多头</span><span class="tag">强动量</span><span class="tag">高夏普</span><span class="tag">主升趋势</span></td>
+</tr>
+<tr class="row-up">
+<td class="rank">#2</td>
+<td class="asset">
+  <div class="asset-name">易方达中证消费电子主题ETF</div>
+  <div class="asset-code">562950 · RPS 95</div>
+  <div class="priority">雷达 81.1 <span class="grade grade-S">S</span></div>
+</td>
+<td class="action"><span class="act act-buy">📈 买入</span><small>现价/突破入场<br>止盈 2.125 / 2.405<br>止损 1.658</small></td>
+<td class="score pos"><b>+17.0</b><small>原始 +8.2</small></td>
+<td class="period"><b class="pos">+0.5</b><small>震荡修复</small></td>
+<td class="period"><b class="pos">+4.5</b><small>主升加速</small></td>
+<td class="period"><b class="pos">+0.5</b><small>盘整偏强</small></td>
+<td class="metric"><b>20日+18.5% / 5日+3.6%</b><small>动量夏普 +0.93<br>趋势强度 +20.7%</small></td>
+<td class="risk"><b>1.658<small>10.1%</small></b><small>ATR 4.6%<br>年波动 33.3%</small></td>
+<td class="tags"><span class="tag">极强多头</span><span class="tag">强动量</span><span class="tag">高夏普</span><span class="tag">主升趋势</span></td>
+</tr>
+<tr class="row-up">
+<td class="rank">#3</td>
+<td class="asset">
+  <div class="asset-name">国泰中证煤炭ETF</div>
+  <div class="asset-code">515220 · RPS 86</div>
+  <div class="priority">雷达 86.1 <span class="grade grade-S">S</span></div>
+</td>
+<td class="action"><span class="act act-buy">📈 买入</span><small>现价/突破入场<br>止盈 1.609 / 1.789<br>止损 1.310</small></td>
+<td class="score pos"><b>+16.0</b><small>原始 +13.5</small></td>
+<td class="period"><b class="pos">+0.5</b><small>震荡修复</small></td>
+<td class="period"><b class="pos">+4.5</b><small>主升加速</small></td>
+<td class="period"><b class="pos">+4.0</b><small>真突破</small></td>
+<td class="metric"><b>20日+14.8% / 5日+11.4%</b><small>动量夏普 +0.48<br>趋势强度 +0.7%</small></td>
+<td class="risk"><b>1.310<small>8.4%</small></b><small>ATR 3.8%<br>年波动 28.7%</small></td>
+<td class="tags"><span class="tag">极强多头</span><span class="tag">强动量</span></td>
+</tr>
+<tr class="row-up">
+<td class="rank">#4</td>
+<td class="asset">
+  <div class="asset-name">华夏中证机器人ETF</div>
+  <div class="asset-code">562500 · RPS 62</div>
+  <div class="priority">雷达 43.9 <span class="grade grade-C">C</span></div>
+</td>
+<td class="action"><span class="act act-watch">👀 观察</span><small>等回调至 1.095<br>企稳再进<br>止损 1.047</small></td>
+<td class="score pos"><b>+4.6</b><small>原始 +1.5</small></td>
+<td class="period"><b class="pos">+0.5</b><small>震荡修复</small></td>
+<td class="period"><b class="pos">+3.0</b><small>平台突破</small></td>
+<td class="period"><b class="neg">-2.5</b><small>真破位</small></td>
+<td class="metric"><b>20日+0.6% / 5日+1.0%</b><small>动量夏普 +0.18<br>趋势强度 +11.2%</small></td>
+<td class="risk"><b>1.047<small>7.3%</small></b><small>ATR 3.3%<br>年波动 26.3%</small></td>
+<td class="tags"><span class="tag">偏多企稳</span><span class="tag">主升趋势</span><span class="tag">周强日弱</span></td>
+</tr>
+<tr class="row-down">
+<td class="rank">#5</td>
+<td class="asset">
+  <div class="asset-name">华泰柏瑞中证光伏产业ETF</div>
+  <div class="asset-code">515790 · RPS 48</div>
+  <div class="priority">雷达 3.9 <span class="grade grade-C">C</span></div>
+</td>
+<td class="action"><span class="act act-wait">⏳ 观望</span><small>等待周线转强<br>或日线突破</small></td>
+<td class="score neg"><b>-8.7</b><small>原始 -8.2</small></td>
+<td class="period"><b class="neg">+0.0</b><small>震荡修复</small></td>
+<td class="period"><b class="neg">-3.0</b><small>下跌延续</small></td>
+<td class="period"><b class="neg">-2.5</b><small>真破位</small></td>
+<td class="metric"><b>20日-2.7% / 5日-0.8%</b><small>动量夏普 -0.14<br>趋势强度 +1.2%</small></td>
+<td class="risk"><b>0.989<small>7.3%</small></b><small>ATR 3.3%<br>年波动 31.9%</small></td>
+<td class="tags"><span class="tag">偏空走弱</span></td>
+</tr>
+<tr class="row-down">
+<td class="rank">#6</td>
+<td class="asset">
+  <div class="asset-name">易方达中证海外中国互联网50(QDI</div>
+  <div class="asset-code">513050 · RPS 33</div>
+  <div class="priority">雷达 2.0 <span class="grade grade-C">C</span></div>
+</td>
+<td class="action"><span class="act act-wait">⏳ 观望</span><small>等待周线转强<br>或日线突破</small></td>
+<td class="score neg"><b>-9.3</b><small>原始 -7.1</small></td>
+<td class="period"><b class="neg">-2.7</b><small>空头结构</small></td>
+<td class="period"><b class="neg">-2.5</b><small>下跌延续</small></td>
+<td class="period"><b class="pos">+0.5</b><small>盘整偏强</small></td>
+<td class="metric"><b>20日-8.3% / 5日+3.0%</b><small>动量夏普 -0.32<br>趋势强度 -3.2%</small></td>
+<td class="risk"><b>1.069<small>5.7%</small></b><small>ATR 2.6%<br>年波动 26.6%</small></td>
+<td class="tags"><span class="tag">波段空头</span><span class="tag">下降趋势</span></td>
+</tr></tbody></table></div>
+</div><div class="footer">⚠️ 仅供学习研究，不构成投资建议。执行原则：先看大盘仓位，再看周线节奏，最后用日线买点进场；破止损必须离场。</div></div></main>
 </body></html>
