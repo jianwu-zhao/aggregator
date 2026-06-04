@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>ETF波段雷达</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;background:#0f172a;color:#e2e8f0;padding:12px}
+h1{font-size:16px}
+.sub{color:#94a3b8;font-size:12px;margin:4px 0 10px}
+.e{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:700}
+.e.b{background:#166534;color:#86efac}
+.e.r{background:#7f1d1d;color:#fca5a5}
+.e.n{background:#451a03;color:#fdba74}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{background:#1e293b;padding:6px 4px;text-align:left;white-space:nowrap;font-size:10px;color:#94a3b8}
+td{padding:5px 4px;border-top:1px solid #1e293b;font-size:11px}
+tr:hover{background:#1e293b44}
+.n{font-family:monospace;text-align:right}
+.u{color:#86efac} .d{color:#fca5a5}
+b2{font-family:monospace;font-size:10px;color:#64748b}
+s{display:inline-block;padding:1px 5px;border-radius:4px;font-size:9px;background:#1e293b;color:#94a3b8}
+.p{border-left:2px solid #86efac} .n{border-left:2px solid #fca5a5}
+.f{font-size:10px;color:#475569;margin-top:12px}
+</style></head><body>
+<h1>📡 ETF波段雷达</h1>
+<div class=sub>更新: 20260604 · 大盘: <span class="e bear">偏空震荡</span> 宽度33.3% · 多空比0.73</div>
+<table><thead><tr><th>标的</th><th>月±5</th><th>周±6</th><th>日±4</th><th>总分</th><th>RSI</th><th>5日</th><th>20日</th><th>信号</th></tr></thead>
+<tbody><tr class=p>
+<td><b>国泰中证煤炭ETF</b><br><b2>515220</b2></td>
+<td class=""u"">+0.5</td>
+<td class=""u"">+4.5</td>
+<td class=""u"">+4.0</td>
+<td class=""u""><b>+13.5</b></td>
+<td>73.5</td>
+<td class=""u"">+11.9%</td>
+<td class=""u"">+11.4%</td>
+<td><s>🚀主升</s></td></tr><tr class=p>
+<td><b>广发中证全指电力ETF</b><br><b2>159611</b2></td>
+<td class=""u"">+0.5</td>
+<td class=""u"">+3.5</td>
+<td class=""u"">+3.5</td>
+<td class=""u""><b>+11.2</b></td>
+<td>63.4</td>
+<td class=""u"">+4.2%</td>
+<td class=""u"">+8.7%</td>
+<td></td></tr><tr class=p>
+<td><b>易方达国证成长100ETF</b><br><b2>159259</b2></td>
+<td class=""u"">+0.5</td>
+<td class=""u"">+4.5</td>
+<td class=""u"">+1.5</td>
+<td class=""u""><b>+9.8</b></td>
+<td>60.3</td>
+<td class=""u"">+2.4%</td>
+<td class=""u"">+9.1%</td>
+<td><s>🚀主升</s></td></tr><tr class=p>
+<td><b>易方达中证消费电子主题ETF</b><br><b2>562950</b2></td>
+<td class=""u"">+0.5</td>
+<td class=""u"">+4.5</td>
+<td class=""u"">+0.5</td>
+<td class=""u""><b>+8.2</b></td>
+<td>63.8</td>
+<td class=""d"">-2.4%</td>
+<td class=""u"">+15.2%</td>
+<td><s>🚀主升</s></td></tr><tr class=p>
+<td><b>国泰中证全指通信设备ETF</b><br><b2>515880</b2></td>
+<td class=""d"">-2.2</td>
+<td class=""u"">+3.5</td>
+<td class=""u"">+4.0</td>
+<td class=""u""><b>+7.9</b></td>
+<td>63.3</td>
+<td class=""u"">+6.0%</td>
+<td class=""u"">+21.4%</td>
+<td></td></tr><tr class=p>
+<td><b>汇添富中证能源ETF</b><br><b2>159930</b2></td>
+<td class=""d"">+0.0</td>
+<td class=""u"">+0.5</td>
+<td class=""u"">+4.0</td>
+<td class=""u""><b>+6.8</b></td>
+<td>67.9</td>
+<td class=""u"">+5.6%</td>
+<td class=""u"">+3.2%</td>
+<td></td></tr><tr class=p>
+<td><b>国泰中证机床ETF</b><br><b2>159667</b2></td>
+<td class=""u"">+0.5</td>
+<td class=""u"">+3.0</td>
+<td class=""u"">+0.5</td>
+<td class=""u""><b>+6.0</b></td>
+<td>55.3</td>
+<td class=""d"">-2.2%</td>
+<td class=""u"">+7.9%</td>
+<td></td></tr><tr class=p>
+<td><b>华宝中证银行ETF</b><br><b2>512800</b2></td>
+<td class=""d"">-2.2</td>
+<td class=""d"">+0.0</td>
+<td class=""u"">+3.5</td>
+<td class=""u""><b>+1.9</b></td>
+<td>49.4</td>
+<td class=""u"">+2.9%</td>
+<td class=""d"">-0.1%</td>
+<td></td></tr><tr class=p>
+<td><b>华夏上证科创板半导体材料设备ET</b><br><b2>588170</b2></td>
+<td class=""u"">+0.5</td>
+<td class=""u"">+3.0</td>
+<td class=""d"">-3.0</td>
+<td class=""u""><b>+0.8</b></td>
+<td>53.5</td>
+<td class=""d"">-7.9%</td>
+<td class=""u"">+17.4%</td>
+<td></td></tr><tr class=p>
+<td><b>华夏中证机器人ETF</b><br><b2>562500</b2></td>
+<td class=""u"">+0.5</td>
+<td class=""u"">+3.0</td>
+<td class=""d"">-3.0</td>
+<td class=""u""><b>+0.8</b></td>
+<td>49.8</td>
+<td class=""d"">-3.3%</td>
+<td class=""u"">+2.7%</td>
+<td></td></tr><tr class=p>
+<td><b>华夏中证电网设备主题ETF</b><br><b2>159326</b2></td>
+<td class=""d"">+0.0</td>
+<td class=""d"">+0.0</td>
+<td class=""u"">+0.5</td>
+<td class=""u""><b>+0.8</b></td>
+<td>48.0</td>
+<td class=""u"">+0.9%</td>
+<td class=""u"">+0.8%</td>
+<td></td></tr><tr class=n>
+<td><b>易方达中证海外中国互联网50(Q</b><br><b2>513050</b2></td>
+<td class=""d"">-2.7</td>
+<td class=""d"">-2.5</td>
+<td class=""u"">+0.5</td>
+<td class=""d""><b>-7.1</b></td>
+<td>38.8</td>
+<td class=""u"">+5.2%</td>
+<td class=""d"">-6.6%</td>
+<td></td></tr><tr class=n>
+<td><b>酒ETF</b><br><b2>512690</b2></td>
+<td class=""d"">-2.7</td>
+<td class=""d"">-2.5</td>
+<td class=""d"">+0.0</td>
+<td class=""d""><b>-7.8</b></td>
+<td>36.9</td>
+<td class=""u"">+0.2%</td>
+<td class=""d"">-7.1%</td>
+<td></td></tr><tr class=n>
+<td><b>嘉实中证稀有金属主题ETF</b><br><b2>562800</b2></td>
+<td class=""d"">+0.0</td>
+<td class=""d"">-3.0</td>
+<td class=""d"">-2.5</td>
+<td class=""d""><b>-8.2</b></td>
+<td>40.3</td>
+<td class=""d"">-1.0%</td>
+<td class=""d"">-10.6%</td>
+<td></td></tr><tr class=n>
+<td><b>嘉实中证稀土产业ETF</b><br><b2>516150</b2></td>
+<td class=""d"">+0.0</td>
+<td class=""d"">-3.0</td>
+<td class=""d"">-2.5</td>
+<td class=""d""><b>-8.2</b></td>
+<td>41.0</td>
+<td class=""d"">-1.7%</td>
+<td class=""d"">-6.8%</td>
+<td></td></tr><tr class=n>
+<td><b>国泰中证军工ETF</b><br><b2>512660</b2></td>
+<td class=""d"">+0.0</td>
+<td class=""d"">-3.0</td>
+<td class=""d"">-2.5</td>
+<td class=""d""><b>-8.2</b></td>
+<td>24.1</td>
+<td class=""d"">-5.3%</td>
+<td class=""d"">-12.0%</td>
+<td></td></tr><tr class=n>
+<td><b>华泰柏瑞中证光伏产业ETF</b><br><b2>515790</b2></td>
+<td class=""d"">+0.0</td>
+<td class=""d"">-3.0</td>
+<td class=""d"">-3.0</td>
+<td class=""d""><b>-9.0</b></td>
+<td>35.7</td>
+<td class=""d"">-5.6%</td>
+<td class=""d"">-3.3%</td>
+<td></td></tr><tr class=n>
+<td><b>华安黄金ETF</b><br><b2>518880</b2></td>
+<td class=""d"">+0.0</td>
+<td class=""d"">-3.0</td>
+<td class=""d"">-3.0</td>
+<td class=""d""><b>-9.0</b></td>
+<td>32.5</td>
+<td class=""u"">+1.6%</td>
+<td class=""d"">-6.3%</td>
+<td></td></tr><tr class=n>
+<td><b>华夏中证动漫游戏ETF</b><br><b2>159869</b2></td>
+<td class=""d"">-2.7</td>
+<td class=""d"">-3.0</td>
+<td class=""d"">-2.5</td>
+<td class=""d""><b>-12.3</b></td>
+<td>18.7</td>
+<td class=""d"">-2.9%</td>
+<td class=""d"">-16.0%</td>
+<td></td></tr><tr class=n>
+<td><b>广发中证传媒ETF</b><br><b2>512980</b2></td>
+<td class=""d"">-2.7</td>
+<td class=""d"">-3.0</td>
+<td class=""d"">-3.0</td>
+<td class=""d""><b>-13.0</b></td>
+<td>28.0</td>
+<td class=""d"">-1.2%</td>
+<td class=""d"">-14.2%</td>
+<td></td></tr><tr class=n>
+<td><b>南方中证全指房地产ETF</b><br><b2>512200</b2></td>
+<td class=""d"">-2.7</td>
+<td class=""d"">-3.0</td>
+<td class=""d"">-3.0</td>
+<td class=""d""><b>-13.0</b></td>
+<td>22.4</td>
+<td class=""d"">-1.9%</td>
+<td class=""d"">-10.5%</td>
+<td></td></tr></tbody></table>
+<div class=f>⚠️ 仅供学习参考，不构成投资建议</div>
+</body></html>
