@@ -49,7 +49,8 @@ tr:hover{background:#f8fafc}
 .pred-cell{text-align:center;min-width:80px}.pred-cell b{display:block;font-size:14px;font-family:ui-monospace,monospace}.pred-cell small{display:block;color:#94a3b8;font-size:10px}
 .period-cell{text-align:center;min-width:55px}.period-cell b{font-family:ui-monospace,monospace;font-size:14px}.period-cell small{display:block;color:#94a3b8;font-size:10px}
 .buy-cell{min-width:110px}.buy-cell small{display:block;font-size:10px;color:#475569;line-height:1.5;font-family:ui-monospace,monospace}
-.row-up{box-shadow:inset 3px 0 0 #dc2626}.row-down{box-shadow:inset 3px 0 0 #059669}
+.row-up{box-shadow:inset 3px 0 0 #dc2626}.row-down{box-shadow:inset 3px 0 0 #059669}.row-excluded{background:#fef2f2;box-shadow:inset 3px 0 0 #ef4444}
+.sig-cell{min-width:160px;line-height:1.5}.sig-cell small{color:#475569;font-size:11px}.sig-ex{color:#dc2626;font-weight:700;font-size:11px}
 .legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.legend span{padding:4px 8px;border-radius:999px;background:#f1f5f9;color:#475569;font-size:11px}
 .footer{color:#94a3b8;text-align:center;font-size:12px;line-height:1.8;margin-top:16px}
 @media(max-width:900px){.hero{padding:16px 10px}.grid{grid-template-columns:repeat(3,1fr)}.kpi{padding:10px}.kpi strong{font-size:16px}.main{padding:10px}table{min-width:1400px}.sug-grid{flex-direction:column}}
@@ -78,23 +79,23 @@ tr:hover{background:#f8fafc}
 <div class="sub">更新：20260605　大盘：<span class="badge bull">偏空</span>　市场：偏多(MA60+1.8%)　建议仓位：80%　宽度：19.4%　多空比：0.31</div>
 <div class="defbox def-off"><b>🛡️ 进攻为主</b><span>市场允许进攻，防守资产仅作备用。</span></div>
 <div class="grid">
-  <div class="kpi"><label>📈 强买</label><strong>0</strong><small>趋势高+风险低+买点好</small></div>
-  <div class="kpi"><label>✅ 买入</label><strong>8</strong><small>趋势偏多风险可控</small></div>
-  <div class="kpi"><label>👀 观察</label><strong>2</strong><small>等回调确认</small></div>
-  <div class="kpi"><label>⏳ 等待</label><strong>26</strong><small>趋势未确认</small></div>
-  <div class="kpi"><label>🚫 规避</label><strong>0</strong><small>风险过高</small></div>
-  <div class="kpi"><label>🏆 Top3</label><strong style="font-size:13px">国泰中证煤炭 +14.0 / 易方达中证消 +12.6 / 国泰中证全指 +11.6</strong><small>按增强分排序</small></div>
+  <div class="kpi"><label>📈 强拐</label><strong>0</strong><small>拐点≥60+回归≥30</small></div>
+  <div class="kpi"><label>✅ 关注</label><strong>1</strong><small>拐点初现</small></div>
+  <div class="kpi"><label>👀 超卖</label><strong>5</strong><small>均值回归机会</small></div>
+  <div class="kpi"><label>⏳ 观察</label><strong>27</strong><small>信号不足</small></div>
+  <div class="kpi"><label>🚫 排除</label><strong>3</strong><small>过热过滤</small></div>
+  <div class="kpi"><label>🏆 Top3</label><strong style="font-size:13px">华安黄金ET +38.6 / 化工ETF +38.0 / 国泰中证军工 +35.3</strong><small>按V4分排序</small></div>
 </div>
 __SUGGESTIONS__
 </div></section>
 <main class="main"><div class="wrap"><div class="card">
 <div class="toolbar"><div><h2>全部 36 只 ETF 因子雷达</h2>
-<div class="hint">六维因子：趋势(MA排列+斜率) · 动量(涨幅+夏普+连涨) · RPS(相对强度) · 风控(波动率+ATR+回撤) · 买点(BOLL+RSI+MA20距离+MACD) · 拥挤度(量能偏离+连涨+RSI过热)<br>预测：趋势概率=多周期共振权重；回撤风险=波动率+趋势+拥挤度；操作建议=综合因子判断。ATR×2.2止损。</div></div>
-<div class="legend"><span>领先区 优先</span><span>改善区 观察</span><span>转弱区 止盈</span><span>落后区 回避</span><span>📈因子条 蓝=中性 绿=好 红=差</span></div></div>
+<div class="hint">V4数据驱动评分：拐点检测(60% IC~+0.07~+0.10) + 均值回归(25% 20日IC~+0.04) + 价格结构(15% 20日IC~+0.03) —— 基于90日滚动回测IC分析<br>排除规则：RSI>70 / 布林>80% / 连涨≥6天 / 远离MA60>25%；被排除的ETF评分打3折。拐点=MACD金叉+RSI反弹+放量阳线+站上MA5+下影线。ATR×2.2止损。</div></div>
+<div class="legend"><span>拐点:MACD金叉+RSI反弹+放量阳线</span><span>回归:超卖反弹</span><span>结构:底部抬升</span><span>🚫被排除:过热</span><span>因子条 绿=强 蓝=中 红/灰=弱</span></div></div>
 <div class="tablebox"><table><thead><tr>
-<th>序</th><th>标的/评分</th><th>操作建议</th><th>RRG</th><th>增强分*</th>
-<th>趋势</th><th>动量</th><th>RPS</th><th>风控</th><th>买点</th><th>拥挤</th>
-<th>预测</th><th>月线</th><th>周线</th><th>日线</th><th>买点参考</th>
+<th>序</th><th>标的</th><th>操作建议</th><th>拐点信号</th><th>V4评分</th>
+<th>拐点分</th><th>均值回归</th><th>价格结构</th>
+<th>RSI/风控</th><th>月线</th><th>周线</th><th>日线</th><th>买点参考</th>
 </tr></thead><tbody>__ROWS__</tbody></table></div>
 </div>
 __IC_HTML__
