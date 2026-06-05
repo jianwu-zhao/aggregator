@@ -56,6 +56,8 @@ tr:hover{background:#f8fafc}
 .chlog-list{display:flex;flex-wrap:wrap;gap:6px}
 .chlog-item{display:inline-flex;align-items:center;gap:6px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:6px 10px;font-size:12px;white-space:nowrap}
 .chlog-icon{font-size:14px}.chlog-type{font-weight:700;color:#0f172a;min-width:40px}.chlog-name{font-weight:700}.chlog-code{color:#64748b;font-family:ui-monospace,monospace;font-size:11px}.chlog-score{font-family:ui-monospace,monospace;font-weight:700;font-size:11px}.chlog-detail{color:#64748b;font-size:11px}
+.trend-table{width:100%;min-width:auto;border-collapse:collapse;font-size:11px}.trend-table th{background:#f8fafc;padding:6px 8px;text-align:center;font-size:10px}.trend-table td{padding:5px 8px;text-align:center;border-bottom:1px solid #f1f5f9}.tname{text-align:left!important;font-weight:700;font-size:11px}.tcode{color:#94a3b8;font-size:9px;font-family:ui-monospace,monospace}.tval{font-family:ui-monospace,monospace;font-size:11px}.tup{color:#dc2626;font-weight:700}.tdown{color:#059669;font-weight:700}
+.diary-grid{display:flex;flex-wrap:wrap;gap:8px}.diary-day{background:#f8fafc;border-radius:10px;padding:8px 12px;min-width:100px}.diary-day b{display:block;font-size:12px;color:#0f172a;margin-bottom:4px}.diary-top{display:block;font-family:ui-monospace,monospace;font-size:11px;color:#64748b;margin:2px 0}
 .legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.legend span{padding:4px 8px;border-radius:999px;background:#f1f5f9;color:#475569;font-size:11px}
 .footer{color:#94a3b8;text-align:center;font-size:12px;line-height:1.8;margin-top:16px}
 @media(max-width:900px){.hero{padding:16px 10px}.grid{grid-template-columns:repeat(3,1fr)}.kpi{padding:10px}.kpi strong{font-size:16px}.main{padding:10px}table{min-width:1400px}.sug-grid{flex-direction:column}}
@@ -1858,6 +1860,12 @@ tr:hover{background:#f8fafc}
 <td>3,763</td>
 <td>✅</td>
 </tr></tbody></table></div>
+<div class="chlog-box"><div class="chlog-title">📈 评分走势</div><p style="color:#94a3b8;font-size:12px">需要至少2天数据，明天开始显示。</p></div>
+<div class="chlog-box">
+<div class="chlog-title">📓 市场日记（最近5天）</div>
+<div class="diary-grid"><div class="diary-day"><b>06/05</b><span class="diary-top">黄金ETF +38.6</span><span class="diary-top">化工ETF +38.0</span><span class="diary-top">创新药ETF +36.8</span></div></div>
+<div style="font-size:11px;color:#94a3b8;margin-top:8px">完整日记: output/diary/</div>
+</div>
 <div class="chlog-box"><div class="chlog-title">📋 信号变化日志</div><p style="color:#94a3b8;font-size:12px">首次运行，明天开始显示信号变化对比。</p></div>
 <div class="footer">⚠️ 仅供量化研究，不构成投资建议。执行原则：先看大盘仓位，再看周线节奏，最后用日线买点进场；破止损必须离场。<br>IC>0.03有效 · 自适应权重动态调整 · 风险预算控制波动率≤15% · ATR×2.2止损。</div></div></main>
 </body></html>
