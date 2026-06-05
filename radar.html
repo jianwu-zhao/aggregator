@@ -1,127 +1,1129 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ETF波段雷达</title>
+<title>ETF波段雷达V2</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#0f172a;color:#0f172a}.hero{background:radial-gradient(circle at 20% 20%,#4f46e5 0,#312e81 32%,#0f172a 78%);padding:22px 14px 26px;color:#fff}.wrap{max-width:1500px;margin:0 auto}h1{margin:0;font-size:24px;letter-spacing:.5px}.sub{margin-top:8px;color:#cbd5e1;font-size:13px;line-height:1.8}.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:800}.bull{background:#fee2e2;color:#991b1b}.bear{background:#dcfce7;color:#166534}.neutral{background:#e0e7ff;color:#3730a3}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.kpi{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:14px;backdrop-filter:blur(10px)}.kpi label{display:block;color:#cbd5e1;font-size:12px}.kpi strong{display:block;margin-top:8px;font-size:20px;color:#fff}.kpi small{display:block;margin-top:4px;color:#94a3b8}.main{padding:16px 14px 28px}.card{background:#fff;border-radius:18px;box-shadow:0 16px 48px rgba(2,6,23,.22);overflow:hidden}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 16px;border-bottom:1px solid #e2e8f0;background:#f8fafc}.toolbar h2{margin:0;font-size:16px}.hint{color:#64748b;font-size:12px;line-height:1.7}.tablebox{overflow-x:auto}table{width:100%;min-width:1280px;border-collapse:collapse}th{position:sticky;top:0;z-index:1;background:#f8fafc;color:#64748b;font-size:12px;text-align:left;padding:11px 10px;border-bottom:1px solid #e2e8f0;white-space:nowrap}td{padding:12px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top;font-size:12px}tr:hover{background:#f8fafc}.rank{width:48px;color:#94a3b8;font-family:ui-monospace,Consolas,monospace}.asset{min-width:175px}.asset-name{font-weight:800;font-size:14px}.asset-code,.priority{margin-top:4px;color:#64748b;font-family:ui-monospace,Consolas,monospace;font-size:11px}.grade{display:inline-block;margin-left:5px;padding:1px 7px;border-radius:6px;font-weight:900}.grade-S{background:#fee2e2;color:#991b1b}.grade-A{background:#ffedd5;color:#9a3412}.grade-B{background:#dbeafe;color:#1e40af}.grade-C{background:#f1f5f9;color:#475569}.act{display:inline-block;padding:5px 10px;border-radius:10px;font-weight:900;white-space:nowrap}.act-buy{background:#fee2e2;color:#b91c1c}.act-watch{background:#fef3c7;color:#a16207}.act-wait{background:#f1f5f9;color:#64748b}.rrg-badge{display:inline-block;padding:5px 9px;border-radius:10px;font-weight:900;white-space:nowrap}.rrg-leading{background:#fee2e2;color:#991b1b}.rrg-improving{background:#dbeafe;color:#1e40af}.rrg-weakening{background:#fef3c7;color:#92400e}.rrg-lagging{background:#dcfce7;color:#166534}.defbox{margin-top:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.16)}.defbox b{display:inline-block;margin-right:8px}.def-on b{color:#fde68a}.def-cash b{color:#bbf7d0}.def-off b{color:#fecaca}.action small,.rrg small,.score small,.period small,.metric small,.risk small{display:block;margin-top:6px;line-height:1.45;color:#64748b}.score b{font-size:20px;font-family:ui-monospace,Consolas,monospace}.period b{font-family:ui-monospace,Consolas,monospace;font-size:15px}.pos{color:#dc2626}.neg{color:#059669}.metric b,.risk b{font-family:ui-monospace,Consolas,monospace}.risk small{white-space:nowrap}.tag{display:inline-block;margin:2px 3px 2px 0;padding:3px 7px;border-radius:8px;background:#eef2ff;color:#3730a3;font-size:11px}.row-up{box-shadow:inset 3px 0 0 #dc2626}.row-down{box-shadow:inset 3px 0 0 #059669}.footer{color:#94a3b8;text-align:center;font-size:12px;line-height:1.8;margin-top:16px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.legend span{padding:5px 9px;border-radius:999px;background:#f1f5f9;color:#475569;font-size:12px}@media(max-width:760px){.hero{padding:18px 12px}h1{font-size:21px}.grid{grid-template-columns:repeat(2,1fr)}.kpi{padding:12px}.kpi strong{font-size:18px}.main{padding:12px}.toolbar{display:block}.card{border-radius:14px}table{min-width:1180px}th,td{padding:10px 8px}.footer{text-align:left}.sub{font-size:12px}}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#0f172a;color:#e2e8f0}
+.hero{background:radial-gradient(circle at 20% 20%,#4f46e5 0,#312e81 32%,#0f172a 78%);padding:22px 14px 26px}.wrap{max-width:1800px;margin:0 auto}
+h1{font-size:22px;color:#fff;letter-spacing:.5px}.sub{margin-top:8px;color:#cbd5e1;font-size:13px;line-height:1.8}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:800}
+.bull{background:#fee2e2;color:#991b1b}.bear{background:#dcfce7;color:#166534}.neutral{background:#e0e7ff;color:#3730a3}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:16px}
+.kpi{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:14px;backdrop-filter:blur(10px)}
+.kpi label{display:block;color:#cbd5e1;font-size:11px}.kpi strong{display:block;margin-top:6px;font-size:20px;color:#fff}
+.kpi small{display:block;margin-top:3px;color:#94a3b8;font-size:11px}
+.defbox{margin-top:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.16);color:#fff}
+.defbox b{margin-right:8px}.def-on b{color:#fde68a}.def-cash b{color:#bbf7d0}.def-off b{color:#fecaca}
+.sug-box{margin-top:12px;padding:14px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.sug-title{font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:10px}
+.sug-grid{display:flex;flex-wrap:wrap;gap:8px}
+.sug-item{background:rgba(255,255,255,.1);border-radius:10px;padding:8px 12px;display:flex;flex-direction:column;min-width:100px}
+.sug-name{font-size:12px;font-weight:700;color:#fff}.sug-pct{font-size:18px;font-weight:900;color:#86efac;margin:4px 0}
+.sug-act{font-size:11px;color:#94a3b8}
+.main{padding:16px 14px 28px}.card{background:#fff;border-radius:18px;box-shadow:0 16px 48px rgba(2,6,23,.22);overflow:hidden}
+.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 16px;border-bottom:1px solid #e2e8f0;background:#f8fafc}
+.toolbar h2{margin:0;font-size:16px}.hint{color:#64748b;font-size:12px;line-height:1.7}
+.tablebox{overflow-x:auto}table{width:100%;min-width:1600px;border-collapse:collapse}
+th{position:sticky;top:0;z-index:1;background:#f8fafc;color:#64748b;font-size:11px;text-align:left;padding:10px 8px;border-bottom:1px solid #e2e8f0;white-space:nowrap}
+td{padding:10px 8px;border-bottom:1px solid #f1f5f9;vertical-align:middle;font-size:12px}
+tr:hover{background:#f8fafc}
+.rank{width:40px;color:#94a3b8;font-family:ui-monospace,monospace;font-size:11px}
+.asset{min-width:160px}.an{font-weight:800;font-size:13px}.ac{margin-top:3px;color:#64748b;font-family:ui-monospace,monospace;font-size:10px}
+.grade{display:inline-block;padding:1px 6px;border-radius:6px;font-weight:900;font-size:10px}
+.grade-S{background:#fee2e2;color:#991b1b}.grade-A{background:#ffedd5;color:#9a3412}.grade-B{background:#dbeafe;color:#1e40af}.grade-C{background:#f1f5f9;color:#475569}
+.act-cell{min-width:100px}.act-cell small{display:block;margin-top:4px;color:#64748b;font-size:10px;line-height:1.4}
+.act{display:inline-block;padding:4px 8px;border-radius:8px;font-weight:900;font-size:11px;white-space:nowrap}
+.act-strong-buy{background:#fee2e2;color:#b91c1c}.act-buy{background:#fef3c7;color:#a16207}
+.act-watch{background:#e0e7ff;color:#3730a3}.act-wait{background:#f1f5f9;color:#64748b}
+.act-avoid{background:#7f1d1d33;color:#fca5a5}
+.rrg-cell small{display:block;margin-top:4px;color:#64748b;font-size:10px}
+.rrg-badge{display:inline-block;padding:4px 8px;border-radius:8px;font-weight:900;font-size:11px;white-space:nowrap}
+.rrg-leading{background:#fee2e2;color:#991b1b}.rrg-improving{background:#dbeafe;color:#1e40af}
+.rrg-weakening{background:#fef3c7;color:#92400e}.rrg-lagging{background:#dcfce7;color:#166534}
+.score-cell{text-align:center}.score-cell b{font-size:18px;font-family:ui-monospace,monospace}.score-cell small{display:block;color:#94a3b8;font-size:10px}
+.pos{color:#dc2626}.neg{color:#059669}
+.factor-cell{min-width:70px;padding:6px 4px}.factor-cell small{display:block;text-align:center;color:#94a3b8;font-size:9px;margin-top:2px}
+.fbar{background:#e2e8f0;border-radius:4px;height:14px;position:relative;overflow:hidden}
+.fbar-fill{height:100%;border-radius:4px;transition:width .3s}
+.bar-blue{background:linear-gradient(90deg,#60a5fa,#3b82f6)}.bar-green{background:linear-gradient(90deg,#4ade80,#22c55e)}.bar-red{background:linear-gradient(90deg,#f87171,#ef4444)}
+.fbar span{position:absolute;right:4px;top:0;font-size:9px;line-height:14px;color:#1e293b;font-weight:700}
+.pred-cell{text-align:center;min-width:80px}.pred-cell b{display:block;font-size:14px;font-family:ui-monospace,monospace}.pred-cell small{display:block;color:#94a3b8;font-size:10px}
+.period-cell{text-align:center;min-width:55px}.period-cell b{font-family:ui-monospace,monospace;font-size:14px}.period-cell small{display:block;color:#94a3b8;font-size:10px}
+.buy-cell{min-width:110px}.buy-cell small{display:block;font-size:10px;color:#475569;line-height:1.5;font-family:ui-monospace,monospace}
+.row-up{box-shadow:inset 3px 0 0 #dc2626}.row-down{box-shadow:inset 3px 0 0 #059669}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.legend span{padding:4px 8px;border-radius:999px;background:#f1f5f9;color:#475569;font-size:11px}
+.footer{color:#94a3b8;text-align:center;font-size:12px;line-height:1.8;margin-top:16px}
+@media(max-width:900px){.hero{padding:16px 10px}.grid{grid-template-columns:repeat(3,1fr)}.kpi{padding:10px}.kpi strong{font-size:16px}.main{padding:10px}table{min-width:1400px}.sug-grid{flex-direction:column}}
 </style></head><body>
 <section class="hero"><div class="wrap">
-<h1>📡 ETF波段雷达</h1>
-<div class="sub">更新：20260605　大盘：<span class="badge bull">偏空</span>　市场：偏多(MA60+1.8%)　建议仓位：100%　宽度：22.2%　多空比：0.35</div>
+<h1>📡 ETF波段雷达 V2</h1>
+<div class="sub">更新：20260605　大盘：<span class="badge bull">偏空</span>　市场：偏多(MA60+1.8%)　建议仓位：80%　宽度：19.4%　多空比：0.31</div>
 <div class="defbox def-off"><b>🛡️ 进攻为主</b><span>市场允许进攻，防守资产仅作备用。</span></div>
 <div class="grid">
-  <div class="kpi"><label>强买信号</label><strong>7 只</strong><small>增强分&gt;8 且周线&gt;2</small></div>
-  <div class="kpi"><label>观察信号</label><strong>2 只</strong><small>等回调/突破确认</small></div>
-  <div class="kpi"><label>弱势/观望</label><strong>27 只</strong><small>暂不追高</small></div>
-  <div class="kpi"><label>展示/全池</label><strong>6/36</strong><small>已做聚类分散化</small></div>
-  <div class="kpi"><label>今日Top</label><strong style="font-size:15px">易方达国证成 +19.7 / 易方达中证消 +17.0 / 华夏上证科创 +16.2</strong><small>按增强总分排序</small></div>
+  <div class="kpi"><label>📈 强买</label><strong>0</strong><small>趋势高+风险低+买点好</small></div>
+  <div class="kpi"><label>✅ 买入</label><strong>8</strong><small>趋势偏多风险可控</small></div>
+  <div class="kpi"><label>👀 观察</label><strong>2</strong><small>等回调确认</small></div>
+  <div class="kpi"><label>⏳ 等待</label><strong>26</strong><small>趋势未确认</small></div>
+  <div class="kpi"><label>🚫 规避</label><strong>0</strong><small>风险过高</small></div>
+  <div class="kpi"><label>🏆 Top3</label><strong style="font-size:13px">国泰中证煤炭 +14.0 / 易方达中证消 +12.6 / 国泰中证全指 +11.6</strong><small>按增强分排序</small></div>
+</div>
+<div class="sug-box">
+<div class="sug-title">💼 建议组合（仓位 80%）</div>
+<div class="sug-grid"><div class="sug-item"><span class="sug-name">国泰中证煤炭ETF</span><span class="sug-pct">17.0%</span><span class="sug-act">✅ 买入</span></div><div class="sug-item"><span class="sug-name">易方达中证消费电子主题E</span><span class="sug-pct">16.3%</span><span class="sug-act">✅ 买入</span></div><div class="sug-item"><span class="sug-name">国泰中证全指通信设备ET</span><span class="sug-pct">15.8%</span><span class="sug-act">✅ 买入</span></div><div class="sug-item"><span class="sug-name">国泰中证机床ETF</span><span class="sug-pct">15.6%</span><span class="sug-act">✅ 买入</span></div><div class="sug-item"><span class="sug-name">易方达国证成长100ET</span><span class="sug-pct">15.3%</span><span class="sug-act">✅ 买入</span></div><div class="sug-item"><span class="sug-name">现金</span><span class="sug-pct">20.0%</span><span class="sug-act">持有</span></div></div>
 </div>
 </div></section>
 <main class="main"><div class="wrap"><div class="card">
-<div class="toolbar"><div><h2>候选列表</h2><div class="hint">总分* = 原多周期分 + 动量夏普 + 趋势强度；RRG用于判断行业所处阶段，买点优先采用突破/回踩模型。</div></div><div class="legend"><span>领先区：优先</span><span>改善区：观察</span><span>转弱区：止盈</span><span>落后区：回避</span><span>🛡️ ATR×2.2止损</span></div></div>
+<div class="toolbar"><div><h2>全部 36 只 ETF 因子雷达</h2>
+<div class="hint">六维因子：趋势(MA排列+斜率) · 动量(涨幅+夏普+连涨) · RPS(相对强度) · 风控(波动率+ATR+回撤) · 买点(BOLL+RSI+MA20距离+MACD) · 拥挤度(量能偏离+连涨+RSI过热)<br>
+预测：趋势概率=多周期共振权重；回撤风险=波动率+趋势+拥挤度；操作建议=综合因子判断。ATR×2.2止损。</div></div>
+<div class="legend"><span>领先区 优先</span><span>改善区 观察</span><span>转弱区 止盈</span><span>落后区 回避</span><span>📈因子条 蓝=中性 绿=好 红=差</span></div></div>
 <div class="tablebox"><table><thead><tr>
-<th>序</th><th>标的</th><th>操作建议</th><th>RRG阶段</th><th>总分*</th><th>月线</th><th>周线</th><th>日线</th><th>动量/趋势</th><th>风控</th><th>状态</th>
+<th>序</th><th>标的/评分</th><th>操作建议</th><th>RRG</th><th>总分*</th>
+<th>趋势</th><th>动量</th><th>RPS</th><th>风控</th><th>买点</th><th>拥挤</th>
+<th>预测</th><th>月线</th><th>周线</th><th>日线</th><th>买点参考</th>
 </tr></thead><tbody>
 <tr class="row-up">
 <td class="rank">#1</td>
 <td class="asset">
-  <div class="asset-name">易方达国证成长100ETF</div>
-  <div class="asset-code">159259 · RPS 100</div>
-  <div class="priority">雷达 97.1 <span class="grade grade-S">S</span></div>
+  <div class="an">国泰中证煤炭ETF</div>
+  <div class="ac">515220 · RPS 100 · 80分 <span class="grade grade-A">A</span></div>
 </td>
-<td class="action"><span class="act act-buy">📈 买入</span><small>突破价 1.554<br>回踩MA20 1.438<br>止盈 1.753/1.967<br>止损 1.398</small></td>
-<td class="rrg"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速，优先持有/突破买</small></td>
-<td class="score pos"><b>+19.7</b><small>原始 +13.5</small></td>
-<td class="period"><b class="pos">+0.5</b><small>震荡修复</small></td>
-<td class="period"><b class="pos">+4.5</b><small>主升加速</small></td>
-<td class="period"><b class="pos">+4.0</b><small>真突破</small></td>
-<td class="metric"><b>20日+11.3% / 5日+5.9%</b><small>动量夏普 +0.69<br>趋势强度 +13.7%</small></td>
-<td class="risk"><b>1.398<small>9.2%</small></b><small>ATR 4.2%<br>年波动 33.5%</small></td>
-<td class="tags"><span class="tag">极强多头</span><span class="tag">强动量</span><span class="tag">高夏普</span><span class="tag">主升趋势</span><span class="tag">领先区</span></td>
+<td class="act-cell"><span class="act act-buy">✅ 买入</span><small>趋势偏多，风险可控</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降</small></td>
+<td class="score-cell pos"><b>+14.0</b><small>原始+12.0</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:100%"></div><span>100</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:85.4%"></div><span>85</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:100%"></div><span>100</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:73.9%"></div><span>74</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-red" style="width:35%"></div><span>35</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>75%</b><small>趋势概率</small>
+  <b>极低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="pos">+0.5</b><small>月线</small></td>
+<td class="period-cell"><b class="pos">+4.5</b><small>周线</small></td>
+<td class="period-cell"><b class="pos">+3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.459</small>
+  <small>回踩 1.27</small>
+  <small>止盈 1.579/1.763</small>
+  <small>止损 1.272</small>
+</td>
 </tr>
 <tr class="row-up">
 <td class="rank">#2</td>
 <td class="asset">
-  <div class="asset-name">易方达中证消费电子主题ETF</div>
-  <div class="asset-code">562950 · RPS 97</div>
-  <div class="priority">雷达 81.1 <span class="grade grade-S">S</span></div>
+  <div class="an">易方达中证消费电子主题ETF</div>
+  <div class="ac">562950 · RPS 97 · 68分 <span class="grade grade-A">A</span></div>
 </td>
-<td class="action"><span class="act act-buy">📈 买入</span><small>突破价 1.918<br>回踩MA20 1.730<br>止盈 2.125/2.405<br>止损 1.658</small></td>
-<td class="rrg"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降，适合止盈/降仓</small></td>
-<td class="score pos"><b>+17.0</b><small>原始 +8.2</small></td>
-<td class="period"><b class="pos">+0.5</b><small>震荡修复</small></td>
-<td class="period"><b class="pos">+4.5</b><small>主升加速</small></td>
-<td class="period"><b class="pos">+0.5</b><small>盘整偏强</small></td>
-<td class="metric"><b>20日+18.5% / 5日+3.6%</b><small>动量夏普 +0.93<br>趋势强度 +20.7%</small></td>
-<td class="risk"><b>1.658<small>10.1%</small></b><small>ATR 4.6%<br>年波动 33.3%</small></td>
-<td class="tags"><span class="tag">极强多头</span><span class="tag">强动量</span><span class="tag">高夏普</span><span class="tag">主升趋势</span><span class="tag">转弱区</span></td>
+<td class="act-cell"><span class="act act-buy">✅ 买入</span><small>趋势偏多，风险可控</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell pos"><b>+12.6</b><small>原始+6.0</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:99.0%"></div><span>99</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:85.7%"></div><span>86</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:97.2%"></div><span>97</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:65.7%"></div><span>66</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:85%"></div><span>85</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>65%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="pos">+0.5</b><small>月线</small></td>
+<td class="period-cell"><b class="pos">+3.5</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">+0.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.911</small>
+  <small>回踩 1.72</small>
+  <small>止盈 2.06/2.346</small>
+  <small>止损 1.582</small>
+</td>
 </tr>
 <tr class="row-up">
 <td class="rank">#3</td>
 <td class="asset">
-  <div class="asset-name">国泰中证煤炭ETF</div>
-  <div class="asset-code">515220 · RPS 92</div>
-  <div class="priority">雷达 86.1 <span class="grade grade-S">S</span></div>
+  <div class="an">国泰中证全指通信设备ETF</div>
+  <div class="ac">515880 · RPS 94 · 73分 <span class="grade grade-A">A</span></div>
 </td>
-<td class="action"><span class="act act-buy">📈 买入</span><small>突破价 1.412<br>回踩MA20 1.262<br>止盈 1.609/1.789<br>止损 1.310</small></td>
-<td class="rrg"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速，优先持有/突破买</small></td>
-<td class="score pos"><b>+16.0</b><small>原始 +13.5</small></td>
-<td class="period"><b class="pos">+0.5</b><small>震荡修复</small></td>
-<td class="period"><b class="pos">+4.5</b><small>主升加速</small></td>
-<td class="period"><b class="pos">+4.0</b><small>真突破</small></td>
-<td class="metric"><b>20日+14.8% / 5日+11.4%</b><small>动量夏普 +0.48<br>趋势强度 +0.7%</small></td>
-<td class="risk"><b>1.310<small>8.4%</small></b><small>ATR 3.8%<br>年波动 28.8%</small></td>
-<td class="tags"><span class="tag">极强多头</span><span class="tag">强动量</span><span class="tag">领先区</span></td>
+<td class="act-cell"><span class="act act-buy">✅ 买入</span><small>趋势偏多，风险可控</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell pos"><b>+11.6</b><small>原始+6.4</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:100%"></div><span>100</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:83.9%"></div><span>84</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:94.4%"></div><span>94</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-red" style="width:36.2%"></div><span>36</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-red" style="width:35%"></div><span>35</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>65%</b><small>趋势概率</small>
+  <b>低风险</b><small>极高波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.2</b><small>月线</small></td>
+<td class="period-cell"><b class="pos">+3.5</b><small>周线</small></td>
+<td class="period-cell"><b class="pos">+3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.775</small>
+  <small>回踩 1.559</small>
+  <small>止盈 1.932/2.201</small>
+  <small>止损 1.484</small>
+</td>
 </tr>
 <tr class="row-up">
 <td class="rank">#4</td>
 <td class="asset">
-  <div class="asset-name">华夏中证电网设备主题ETF</div>
-  <div class="asset-code">159326 · RPS 75</div>
-  <div class="priority">雷达 35.8 <span class="grade grade-C">C</span></div>
+  <div class="an">国泰中证机床ETF</div>
+  <div class="ac">159667 · RPS 92 · 64分 <span class="grade grade-B">B</span></div>
 </td>
-<td class="action"><span class="act act-wait">⏳ 观望</span><small>等待RRG改善/周线转强<br>不接下跌中继</small></td>
-<td class="rrg"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降，适合止盈/降仓</small></td>
-<td class="score pos"><b>+1.9</b><small>原始 +0.8</small></td>
-<td class="period"><b class="neg">+0.0</b><small>震荡修复</small></td>
-<td class="period"><b class="neg">+0.0</b><small>弱势震荡</small></td>
-<td class="period"><b class="pos">+0.5</b><small>盘整偏强</small></td>
-<td class="metric"><b>20日+1.5% / 5日+1.6%</b><small>动量夏普 +0.03<br>趋势强度 +5.2%</small></td>
-<td class="risk"><b>1.950<small>6.8%</small></b><small>ATR 3.1%<br>年波动 29.1%</small></td>
-<td class="tags"><span class="tag">多空震荡</span><span class="tag">主升趋势</span><span class="tag">转弱区</span></td>
+<td class="act-cell"><span class="act act-buy">✅ 买入</span><small>趋势偏多，风险可控</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell pos"><b>+11.3</b><small>原始+6.8</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:85.1%"></div><span>85</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:78.3%"></div><span>78</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:91.7%"></div><span>92</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:70.0%"></div><span>70</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:75%"></div><span>75</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>65%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="pos">+0.5</b><small>月线</small></td>
+<td class="period-cell"><b class="pos">+3.5</b><small>周线</small></td>
+<td class="period-cell"><b class="pos">+0.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 2.471</small>
+  <small>回踩 2.337</small>
+  <small>止盈 2.743/3.077</small>
+  <small>止损 2.186</small>
+</td>
 </tr>
-<tr class="row-down">
+<tr class="row-up">
 <td class="rank">#5</td>
 <td class="asset">
-  <div class="asset-name">华宝中证银行ETF</div>
-  <div class="asset-code">512800 · RPS 72</div>
-  <div class="priority">雷达 18.8 <span class="grade grade-C">C</span></div>
+  <div class="an">易方达国证成长100ETF</div>
+  <div class="ac">159259 · RPS 89 · 62分 <span class="grade grade-B">B</span></div>
 </td>
-<td class="action"><span class="act act-wait">⏳ 观望</span><small>等待RRG改善/周线转强<br>不接下跌中继</small></td>
-<td class="rrg"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降，适合止盈/降仓</small></td>
-<td class="score neg"><b>-3.7</b><small>原始 -3.3</small></td>
-<td class="period"><b class="neg">-2.2</b><small>空头结构</small></td>
-<td class="period"><b class="neg">+0.0</b><small>弱势震荡</small></td>
-<td class="period"><b class="neg">+0.0</b><small>空头通道 · ATR低1.4%</small></td>
-<td class="metric"><b>20日-1.4% / 5日-0.3%</b><small>动量夏普 -0.02<br>趋势强度 -1.6%</small></td>
-<td class="risk"><b>0.750<small>3.1%</small></b><small>ATR 1.4%<br>年波动 50.6%</small></td>
-<td class="tags"><span class="tag">偏空走弱</span><span class="tag">转弱区</span></td>
+<td class="act-cell"><span class="act act-buy">✅ 买入</span><small>趋势偏多，风险可控</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell pos"><b>+10.6</b><small>原始+6.0</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:100%"></div><span>100</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:72.0%"></div><span>72</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:88.9%"></div><span>89</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:66.7%"></div><span>67</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:65%"></div><span>65</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>65%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="pos">+0.5</b><small>月线</small></td>
+<td class="period-cell"><b class="pos">+3.5</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">+0.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.554</small>
+  <small>回踩 1.443</small>
+  <small>止盈 1.709/1.93</small>
+  <small>止损 1.341</small>
+</td>
 </tr>
-<tr class="row-down">
+<tr class="row-up">
 <td class="rank">#6</td>
 <td class="asset">
-  <div class="asset-name">富国中证旅游主题ETF</div>
-  <div class="asset-code">159766 · RPS 33</div>
-  <div class="priority">雷达 0.0 <span class="grade grade-C">C</span></div>
+  <div class="an">华夏中证机器人ETF</div>
+  <div class="ac">562500 · RPS 86 · 60分 <span class="grade grade-B">B</span></div>
 </td>
-<td class="action"><span class="act act-wait">⏳ 观望</span><small>等待RRG改善/周线转强<br>不接下跌中继</small></td>
-<td class="rrg"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱，回避</small></td>
-<td class="score neg"><b>-13.1</b><small>原始 -8.6</small></td>
-<td class="period"><b class="neg">-2.7</b><small>空头结构</small></td>
-<td class="period"><b class="neg">-3.0</b><small>下跌延续</small></td>
-<td class="period"><b class="neg">+0.0</b><small>空头通道</small></td>
-<td class="metric"><b>20日-10.5% / 5日-4.9%</b><small>动量夏普 -0.62<br>趋势强度 -7.1%</small></td>
-<td class="risk"><b>0.555<small>5.3%</small></b><small>ATR 2.4%<br>年波动 22.0%</small></td>
-<td class="tags"><span class="tag">波段空头</span><span class="tag">下降趋势</span><span class="tag">落后区</span></td>
+<td class="act-cell"><span class="act act-buy">✅ 买入</span><small>趋势偏多，风险可控</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell pos"><b>+10.1</b><small>原始+6.8</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:55.9%"></div><span>56</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:69.3%"></div><span>69</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:86.1%"></div><span>86</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:75.8%"></div><span>76</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:95%"></div><span>95</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>60%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="pos">+0.5</b><small>月线</small></td>
+<td class="period-cell"><b class="pos">+3.5</b><small>周线</small></td>
+<td class="period-cell"><b class="pos">+0.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.233</small>
+  <small>回踩 1.128</small>
+  <small>止盈 1.301/1.439</small>
+  <small>止损 1.071</small>
+</td>
+</tr>
+<tr class="row-up">
+<td class="rank">#7</td>
+<td class="asset">
+  <div class="an">华夏上证科创板半导体材料设备ETF</div>
+  <div class="ac">588170 · RPS 83 · 55分 <span class="grade grade-B">B</span></div>
+</td>
+<td class="act-cell"><span class="act act-watch">👀 观察</span><small>等回调确认买点</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell pos"><b>+8.4</b><small>原始+0.8</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:70.3%"></div><span>70</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:90%"></div><span>90</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:83.3%"></div><span>83</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-red" style="width:36.8%"></div><span>37</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:85%"></div><span>85</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>55%</b><small>趋势概率</small>
+  <b>低风险</b><small>极高波动</small>
+</td>
+<td class="period-cell"><b class="pos">+0.5</b><small>月线</small></td>
+<td class="period-cell"><b class="pos">+3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 2.8</small>
+  <small>回踩 2.351</small>
+  <small>止盈 2.984/3.544</small>
+  <small>止损 2.051</small>
+</td>
+</tr>
+<tr class="row-up">
+<td class="rank">#8</td>
+<td class="asset">
+  <div class="an">汇添富中证能源ETF</div>
+  <div class="ac">159930 · RPS 81 · 46分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-buy">✅ 买入</span><small>趋势偏多，风险可控</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降</small></td>
+<td class="score-cell pos"><b>+5.4</b><small>原始+5.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:87.0%"></div><span>87</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:63.3%"></div><span>63</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:80.6%"></div><span>81</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:92.2%"></div><span>92</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:60%"></div><span>60</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>60%</b><small>趋势概率</small>
+  <b>极低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="pos">+0.5</b><small>周线</small></td>
+<td class="period-cell"><b class="pos">+3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.832</small>
+  <small>回踩 1.71</small>
+  <small>止盈 1.929/2.076</small>
+  <small>止损 1.684</small>
+</td>
+</tr>
+<tr class="row-up">
+<td class="rank">#9</td>
+<td class="asset">
+  <div class="an">广发中证全指电力ETF</div>
+  <div class="ac">159611 · RPS 78 · 46分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-watch">👀 观察</span><small>等回调确认买点</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降</small></td>
+<td class="score-cell pos"><b>+5.3</b><small>原始+4.5</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:100%"></div><span>100</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:52.8%"></div><span>53</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:77.8%"></div><span>78</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:86.8%"></div><span>87</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:90%"></div><span>90</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>50%</b><small>趋势概率</small>
+  <b>极低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="pos">+3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">+0.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.263</small>
+  <small>回踩 1.143</small>
+  <small>止盈 1.322/1.466</small>
+  <small>止损 1.082</small>
+</td>
+</tr>
+<tr class="row-up">
+<td class="rank">#10</td>
+<td class="asset">
+  <div class="an">华宝中证银行ETF</div>
+  <div class="ac">512800 · RPS 75 · 35分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-buy">✅ 买入</span><small>趋势偏多，风险可控</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降</small></td>
+<td class="score-cell pos"><b>+1.6</b><small>原始+1.9</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:37.0%"></div><span>37</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:51.8%"></div><span>52</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:75.0%"></div><span>75</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:52.8%"></div><span>53</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:85%"></div><span>85</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>60%</b><small>趋势概率</small>
+  <b>低风险</b><small>极高波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.2</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">+0.0</b><small>周线</small></td>
+<td class="period-cell"><b class="pos">+3.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 0.795</small>
+  <small>回踩 0.76</small>
+  <small>止盈 0.82/0.856</small>
+  <small>止损 0.76</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#11</td>
+<td class="asset">
+  <div class="an">华夏中证电网设备主题ETF</div>
+  <div class="ac">159326 · RPS 72 · 19分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>趋势未确认</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降</small></td>
+<td class="score-cell neg"><b>-3.8</b><small>原始-4.5</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:65.4%"></div><span>65</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:43.6%"></div><span>44</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:72.2%"></div><span>72</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:73.0%"></div><span>73</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:75%"></div><span>75</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>40%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">+0.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 2.205</small>
+  <small>回踩 1.992</small>
+  <small>止盈 2.264/2.474</small>
+  <small>止损 1.914</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#12</td>
+<td class="asset">
+  <div class="an">嘉实中证稀土产业ETF</div>
+  <div class="ac">516150 · RPS 69 · 4分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell neg"><b>-8.8</b><small>原始-8.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:11.7%"></div><span>12</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:22.7%"></div><span>23</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:69.4%"></div><span>69</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:60.0%"></div><span>60</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:95%"></div><span>95</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 2.167</small>
+  <small>回踩 1.91</small>
+  <small>止盈 2.196/2.424</small>
+  <small>止损 1.817</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#13</td>
+<td class="asset">
+  <div class="an">嘉实中证稀有金属主题ETF</div>
+  <div class="ac">562800 · RPS 67 · 3分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-improving">改善区</span><small>弱转强</small></td>
+<td class="score-cell neg"><b>-9.0</b><small>原始-8.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:5.2%"></div><span>5</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:9.7%"></div><span>10</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:66.7%"></div><span>67</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:55.7%"></div><span>56</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:75%"></div><span>75</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.213</small>
+  <small>回踩 1.01</small>
+  <small>止盈 1.182/1.323</small>
+  <small>止损 0.947</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#14</td>
+<td class="asset">
+  <div class="an">卫星ETF永赢</div>
+  <div class="ac">159206 · RPS 64 · 3分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-improving">改善区</span><small>弱转强</small></td>
+<td class="score-cell neg"><b>-9.0</b><small>原始-8.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:1.2%"></div><span>1</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:63.9%"></div><span>64</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:50.2%"></div><span>50</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:60%"></div><span>60</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 2.053</small>
+  <small>回踩 1.63</small>
+  <small>止盈 1.924/2.168</small>
+  <small>止损 1.517</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#15</td>
+<td class="asset">
+  <div class="an">广发中证工程机械ETF</div>
+  <div class="ac">560280 · RPS 61 · 2分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-improving">改善区</span><small>弱转强</small></td>
+<td class="score-cell neg"><b>-9.2</b><small>原始-8.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:11.1%"></div><span>11</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:18.5%"></div><span>18</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:61.1%"></div><span>61</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:87.0%"></div><span>87</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:70%"></div><span>70</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.884</small>
+  <small>回踩 1.631</small>
+  <small>止盈 1.825/1.969</small>
+  <small>止损 1.585</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#16</td>
+<td class="asset">
+  <div class="an">富国中证智选船舶产业ETF</div>
+  <div class="ac">560710 · RPS 58 · 1分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-improving">改善区</span><small>弱转强</small></td>
+<td class="score-cell neg"><b>-9.6</b><small>原始-8.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:16.9%"></div><span>17</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:58.3%"></div><span>58</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:62.4%"></div><span>62</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:70%"></div><span>70</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.125</small>
+  <small>回踩 0.949</small>
+  <small>止盈 1.078/1.178</small>
+  <small>止损 0.911</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#17</td>
+<td class="asset">
+  <div class="an">易方达中证海外中国互联网50(QDI</div>
+  <div class="ac">513050 · RPS 56 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell neg"><b>-9.9</b><small>原始-7.8</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:11.2%"></div><span>11</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:24.4%"></div><span>24</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:55.6%"></div><span>56</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:85.6%"></div><span>86</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:70%"></div><span>70</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>25%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">+0.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.259</small>
+  <small>回踩 1.095</small>
+  <small>止盈 1.23/1.33</small>
+  <small>止损 1.062</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#18</td>
+<td class="asset">
+  <div class="an">国泰中证军工ETF</div>
+  <div class="ac">512660 · RPS 53 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-improving">改善区</span><small>弱转强</small></td>
+<td class="score-cell neg"><b>-10.3</b><small>原始-8.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:3.2%"></div><span>3</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:52.8%"></div><span>53</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:77.2%"></div><span>77</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:50%"></div><span>50</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.496</small>
+  <small>回踩 1.236</small>
+  <small>止盈 1.4/1.526</small>
+  <small>止损 1.19</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#19</td>
+<td class="asset">
+  <div class="an">华安黄金ETF</div>
+  <div class="ac">518880 · RPS 50 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell neg"><b>-10.3</b><small>原始-8.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:28.6%"></div><span>29</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:50.0%"></div><span>50</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:84.8%"></div><span>85</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:70%"></div><span>70</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 9.906</small>
+  <small>回踩 8.974</small>
+  <small>止盈 9.649/10.046</small>
+  <small>止损 8.987</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#20</td>
+<td class="asset">
+  <div class="an">化工ETF</div>
+  <div class="ac">159870 · RPS 47 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-improving">改善区</span><small>弱转强</small></td>
+<td class="score-cell neg"><b>-10.9</b><small>原始-8.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:10.6%"></div><span>11</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:47.2%"></div><span>47</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:76.7%"></div><span>77</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:60%"></div><span>60</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 0.939</small>
+  <small>回踩 0.792</small>
+  <small>止盈 0.897/0.978</small>
+  <small>止损 0.762</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#21</td>
+<td class="asset">
+  <div class="an">易方达国证新能源电池ETF</div>
+  <div class="ac">159566 · RPS 44 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-11.0</b><small>原始-10.5</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:10.8%"></div><span>11</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:19.6%"></div><span>20</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:44.4%"></div><span>44</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:66.9%"></div><span>67</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:40%"></div><span>40</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-4.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 2.522</small>
+  <small>回踩 2.128</small>
+  <small>止盈 2.462/2.73</small>
+  <small>止损 2.015</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#22</td>
+<td class="asset">
+  <div class="an">华泰柏瑞中证光伏产业ETF</div>
+  <div class="ac">515790 · RPS 42 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降</small></td>
+<td class="score-cell neg"><b>-11.4</b><small>原始-10.5</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:11.8%"></div><span>12</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:24.6%"></div><span>25</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:41.7%"></div><span>42</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:67.6%"></div><span>68</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:40%"></div><span>40</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-4.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.167</small>
+  <small>回踩 1.009</small>
+  <small>止盈 1.157/1.273</small>
+  <small>止损 0.962</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#23</td>
+<td class="asset">
+  <div class="an">富国中证旅游主题ETF</div>
+  <div class="ac">159766 · RPS 39 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-11.8</b><small>原始-7.8</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:13.8%"></div><span>14</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:38.9%"></div><span>39</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:92.1%"></div><span>92</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:70%"></div><span>70</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>25%</b><small>趋势概率</small>
+  <b>低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">+0.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 0.66</small>
+  <small>回踩 0.573</small>
+  <small>止盈 0.64/0.689</small>
+  <small>止损 0.558</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#24</td>
+<td class="asset">
+  <div class="an">国泰中证全指家用电器ETF</div>
+  <div class="ac">159996 · RPS 36 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-leading">领先区</span><small>强势且加速</small></td>
+<td class="score-cell neg"><b>-13.0</b><small>原始-12.3</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:14.6%"></div><span>15</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:28.6%"></div><span>29</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:36.1%"></div><span>36</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:96.6%"></div><span>97</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:60%"></div><span>60</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.599</small>
+  <small>回踩 1.437</small>
+  <small>止盈 1.574/1.667</small>
+  <small>止损 1.419</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#25</td>
+<td class="asset">
+  <div class="an">易方达中证香港证券投资主题(港股通)</div>
+  <div class="ac">513090 · RPS 33 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降</small></td>
+<td class="score-cell neg"><b>-13.3</b><small>原始-12.3</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:12.5%"></div><span>12</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:26.2%"></div><span>26</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:33.3%"></div><span>33</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:81.3%"></div><span>81</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:65%"></div><span>65</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>低风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.904</small>
+  <small>回踩 1.691</small>
+  <small>止盈 1.887/2.031</small>
+  <small>止损 1.647</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#26</td>
+<td class="asset">
+  <div class="an">华宝中证金融科技主题ETF</div>
+  <div class="ac">159851 · RPS 31 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-14.1</b><small>原始-12.3</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:3.4%"></div><span>3</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:30.6%"></div><span>31</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-red" style="width:32.2%"></div><span>32</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-red" style="width:30%"></div><span>30</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>中等风险</b><small>极高波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.2</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 0.778</small>
+  <small>回踩 0.629</small>
+  <small>止盈 0.725/0.802</small>
+  <small>止损 0.597</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#27</td>
+<td class="asset">
+  <div class="an">南方中证全指房地产ETF</div>
+  <div class="ac">512200 · RPS 28 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-15.0</b><small>原始-12.3</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:27.8%"></div><span>28</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:89.7%"></div><span>90</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:50%"></div><span>50</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.528</small>
+  <small>回踩 1.258</small>
+  <small>止盈 1.408/1.52</small>
+  <small>止损 1.223</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#28</td>
+<td class="asset">
+  <div class="an">华夏国证自由现金流ETF</div>
+  <div class="ac">159201 · RPS 25 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-15.0</b><small>原始-11.2</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:9.2%"></div><span>9</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:25.0%"></div><span>25</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:95.4%"></div><span>95</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:40%"></div><span>40</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>35%</b><small>趋势概率</small>
+  <b>低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">+0.0</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-4.5</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.32</small>
+  <small>回踩 1.157</small>
+  <small>止盈 1.252/1.311</small>
+  <small>止损 1.154</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#29</td>
+<td class="asset">
+  <div class="an">广发中证传媒ETF</div>
+  <div class="ac">512980 · RPS 22 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-15.5</b><small>原始-12.3</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:22.2%"></div><span>22</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:65.3%"></div><span>65</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:40%"></div><span>40</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.055</small>
+  <small>回踩 0.848</small>
+  <small>止盈 0.969/1.064</small>
+  <small>止损 0.811</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#30</td>
+<td class="asset">
+  <div class="an">嘉实中证软件服务ETF</div>
+  <div class="ac">159852 · RPS 19 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-15.6</b><small>原始-13.0</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:19.4%"></div><span>19</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:64.1%"></div><span>64</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-red" style="width:30%"></div><span>30</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 0.871</small>
+  <small>回踩 0.708</small>
+  <small>止盈 0.817/0.903</small>
+  <small>止损 0.672</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#31</td>
+<td class="asset">
+  <div class="an">华夏中证动漫游戏ETF</div>
+  <div class="ac">159869 · RPS 17 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-improving">改善区</span><small>弱转强</small></td>
+<td class="score-cell neg"><b>-15.8</b><small>原始-12.3</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:16.7%"></div><span>17</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:64.1%"></div><span>64</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:50%"></div><span>50</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.373</small>
+  <small>回踩 1.088</small>
+  <small>止盈 1.237/1.352</small>
+  <small>止损 1.045</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#32</td>
+<td class="asset">
+  <div class="an">国泰中证钢铁ETF</div>
+  <div class="ac">515210 · RPS 14 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-improving">改善区</span><small>弱转强</small></td>
+<td class="score-cell neg"><b>-16.4</b><small>原始-12.3</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:1.4%"></div><span>1</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:13.9%"></div><span>14</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:88.0%"></div><span>88</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:50%"></div><span>50</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.468</small>
+  <small>回踩 1.226</small>
+  <small>止盈 1.352/1.439</small>
+  <small>止损 1.206</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#33</td>
+<td class="asset">
+  <div class="an">酒ETF</div>
+  <div class="ac">512690 · RPS 11 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-weakening">转弱区</span><small>仍强但动能下降</small></td>
+<td class="score-cell neg"><b>-16.6</b><small>原始-13.0</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:13.6%"></div><span>14</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:11.1%"></div><span>11</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:94.8%"></div><span>95</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:50%"></div><span>50</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 0.479</small>
+  <small>回踩 0.42</small>
+  <small>止盈 0.474/0.516</small>
+  <small>止损 0.405</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#34</td>
+<td class="asset">
+  <div class="an">广发中证香港创新药(QDII-ETF</div>
+  <div class="ac">513120 · RPS 8 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-18.6</b><small>原始-15.3</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:8.3%"></div><span>8</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:59.0%"></div><span>59</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-red" style="width:30%"></div><span>30</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>中等风险</b><small>高波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-4.5</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-3.0</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.241</small>
+  <small>回踩 0.993</small>
+  <small>止盈 1.139/1.254</small>
+  <small>止损 0.947</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#35</td>
+<td class="asset">
+  <div class="an">粮食ETF</div>
+  <div class="ac">159698 · RPS 6 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-19.6</b><small>原始-14.5</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:5.6%"></div><span>6</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:93.2%"></div><span>93</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:50%"></div><span>50</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-4.5</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 1.077</small>
+  <small>回踩 0.893</small>
+  <small>止盈 0.991/1.061</small>
+  <small>止损 0.874</small>
+</td>
+</tr>
+<tr class="row-down">
+<td class="rank">#36</td>
+<td class="asset">
+  <div class="an">富国中证农业主题ETF</div>
+  <div class="ac">159825 · RPS 3 · 0分 <span class="grade grade-C">C</span></div>
+</td>
+<td class="act-cell"><span class="act act-wait">⏳ 等待</span><small>弱势中观望</small></td>
+<td class="rrg-cell"><span class="rrg-badge rrg-lagging">落后区</span><small>弱势且继续走弱</small></td>
+<td class="score-cell neg"><b>-20.1</b><small>原始-14.5</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>趋势</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:0%"></div><span>0</span></div><small>动量</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:2.8%"></div><span>3</span></div><small>RPS</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:92.4%"></div><span>92</span></div><small>风控</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-blue" style="width:40%"></div><span>40</span></div><small>买点</small></td>
+<td class="factor-cell"><div class="fbar"><div class="fbar-fill bar-green" style="width:100%"></div><span>100</span></div><small>拥挤</small></td>
+<td class="pred-cell">
+  <b>15%</b><small>趋势概率</small>
+  <b>低风险</b><small>中等波动</small>
+</td>
+<td class="period-cell"><b class="neg">-2.7</b><small>月线</small></td>
+<td class="period-cell"><b class="neg">-4.5</b><small>周线</small></td>
+<td class="period-cell"><b class="neg">-2.5</b><small>日线</small></td>
+<td class="buy-cell">
+  <small>突破 0.84</small>
+  <small>回踩 0.683</small>
+  <small>止盈 0.757/0.811</small>
+  <small>止损 0.668</small>
+</td>
 </tr></tbody></table></div>
-</div><div class="footer">⚠️ 仅供学习研究，不构成投资建议。执行原则：先看大盘仓位，再看周线节奏，最后用日线买点进场；破止损必须离场。</div></div></main>
+</div><div class="footer">⚠️ 仅供量化研究，不构成投资建议。执行原则：先看大盘仓位，再看周线节奏，最后用日线买点进场；破止损必须离场。</div></div></main>
 </body></html>
